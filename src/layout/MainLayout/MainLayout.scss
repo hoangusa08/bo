@@ -1,0 +1,15 @@
+@import "../../assets/scss/foundation/variable/variable";
+@import "../../assets/scss/foundation/mixin/responsive";
+
+.main-layout {
+  width: 100%;
+
+  &-body {
+    width: 100%;
+    margin-left: 250px;
+    margin-top: 50px;
+    @include mq_down(sp) {
+      margin: 0;
+    }
+  }
+}

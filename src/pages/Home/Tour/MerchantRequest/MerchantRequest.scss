@@ -1,0 +1,19 @@
+@import "../../../../assets/scss/app.scss";
+
+.overview-category {
+  position: relative;
+  padding: 60px 40px;
+
+  .btn-add {
+    position: absolute;
+    top: 70px;
+    right: 70px;
+  }
+
+  .main {
+    margin-top: 20px;
+  }
+  button{
+    margin-left: 5px;
+  }
+}
