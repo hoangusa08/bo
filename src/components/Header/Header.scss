@@ -3,4 +3,27 @@
     background-color: #f0f2f5;
     position: fixed;
     width: 100%;
+    .account{
+        float: right;
+        margin-right: 80px;
+        height: 100%;
+        img{
+            height: 100%;
+            margin-right: 10px;
+        }
+     
+    }
+    .menu{
+        
+        margin-top: 50px;
+        z-index: 1000;
+        background-color: aqua;
+        width: 100px;
+        position: absolute;
+        right: 0;
+        &:hover{
+            background-color: black;
+        }
+      
+    }
 }

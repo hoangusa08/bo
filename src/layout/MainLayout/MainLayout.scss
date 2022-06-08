@@ -8,6 +8,7 @@
     width: 100%;
     margin-left: 250px;
     margin-top: 50px;
+    z-index: 50;
     @include mq_down(sp) {
       margin: 0;
     }

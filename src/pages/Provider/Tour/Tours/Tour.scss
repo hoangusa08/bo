@@ -3,6 +3,7 @@
 .overview-category {
   position: relative;
   padding: 60px 40px;
+  z-index: 0;
   .merchant-header{
     display: flex;
     justify-content: space-between;

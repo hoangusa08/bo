@@ -63,7 +63,7 @@ function Merchant() {
     <MainLayout>
       <div className="overview-category">
         <div className="merchant-header">
-          <h2>Manager Tour</h2>
+          <h2>Tour Await</h2>
           <div>
             <Button
               className="btn-success"

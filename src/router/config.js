@@ -6,15 +6,15 @@ import Login from "pages/Authentication/Login/Login";
 import Error from "pages/Error/Error.js";
 import EnterEmail from "pages/Authentication/FogotPassword/EnterEmail";
 import UpdatePassWord from "pages/Authentication/FogotPassword/UpdatePassWord";
-import CategoryCreation from "pages/Home/Categories/CategoryCreation/CategoryCreation";
-import CategoryManagement from "pages/Home/Categories/CategoryManagement/CategoryManagement";
-import Tour from "pages/Home/Tour/Tours/Tour";
-import MerchantRequest from "pages/Home/Tour/MerchantRequest/MerchantRequest";
-import CreateTour from "pages/Home/Tour/CreateTour/CreateTour";
-import CategoryEdit from "pages/Home/Categories/CategoryEdit/CategoryEdit";
-import SubCateManage from "pages/Home/Categories/SubCateManage/SubCateManage";
-import NewSubCate from "pages/Home/Categories/NewSubCate/NewSubCate";
-import EditSubCate from "pages/Home/Categories/EditSubCate/EditSubCate";
+import CategoryManagement from "pages/Provider/Categories/CategoryManagement/CategoryManagement";
+import Tour from "pages/Provider/Tour/Tours/Tour";
+import TourAwait from "pages/Provider/Tour/TourAwait/TourAwait";
+import CreateTour from "pages/Provider/Tour/CreateTour/CreateTour";
+import CategoryEdit from "pages/Provider/Categories/CategoryEdit/CategoryEdit";
+import SubCateManage from "pages/Provider/Categories/SubCateManage/SubCateManage";
+import NewSubCate from "pages/Provider/Categories/NewSubCate/NewSubCate";
+import EditSubCate from "pages/Provider/Categories/EditSubCate/EditSubCate";
+import Account from "pages/Account/Account";
 
 export const routeConfig = [
   {
@@ -22,6 +22,12 @@ export const routeConfig = [
     isPrivate: false,
     exact: true,
     component: Login
+  },
+  {
+    path: "/account",
+    isPrivate: false,
+    exact: true,
+    component: Account
   },
   {
     path: "/forgot-password-enter-email",
@@ -36,10 +42,10 @@ export const routeConfig = [
     component: UpdatePassWord
   },
   {
-    path: "/manage-categories-new",
+    path: "/tour-await",
     isPrivate: false,
     exact: true,
-    component: CategoryCreation
+    component: TourAwait
   },
   {
     path: "/manage-categories",
@@ -53,12 +59,7 @@ export const routeConfig = [
     exact: true,
     component: Tour
   },
-  {
-    path: "/manage-merchants-request",
-    isPrivate: false,
-    exact: true,
-    component: MerchantRequest
-  },
+
   {
     path: "/manage-tour-create",
     isPrivate: false,

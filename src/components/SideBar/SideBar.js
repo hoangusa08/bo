@@ -9,12 +9,12 @@ import "./SideBar.scss";
 
 const menu_provider = [
   {
-    label: "Tour Await",
+    label: "Tours Await",
     path: "/manage-merchants",
     icon: ""
   },
   {
-    label: "Tours",
+    label: "Tours Accept",
     path: "/manage-merchants-request",
     icon: ""
   },
@@ -29,7 +29,22 @@ const menu_provider = [
     icon: ""
   },
   {
-    label: "New Tours Booked Accept",
+    label: "Tours Booked Accept",
+    path: "/manage-categories",
+    icon: ""
+  },
+  {
+    label: "Tours Booked complete",
+    path: "/manage-categories",
+    icon: ""
+  },
+  {
+    label: "Tours Booked Delete",
+    path: "/manage-categories",
+    icon: ""
+  },
+  {
+    label: "Tours Booked Delete",
     path: "/manage-categories",
     icon: ""
   }
