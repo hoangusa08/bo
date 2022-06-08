@@ -20,9 +20,9 @@
     justify-content: space-between;
 
     &-header {
-      max-width: 176px;
       margin: 0 auto;
-      margin-top: 56px;
+      height: 50px;
+      align-items: center;
     }
 
     @include mq_down(sp) {

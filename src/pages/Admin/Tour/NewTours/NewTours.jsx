@@ -2,7 +2,7 @@
 import MainLayout from "layout/MainLayout/MainLayout";
 import { React } from "react";
 import { Table } from "reactstrap";
-import "./TourAwait.scss";
+import "./NewTours.scss";
 
 const merchantRequests = [
   {
@@ -85,7 +85,7 @@ const style = (active) => {
     : { color: "red", fontWeight: "bold", textAlign: "center" };
 };
 
-function MerchantRequest() {
+function NewTours() {
   let noMerchant = 0;
 
   const tableMerchantRequest = merchantRequests.map(
@@ -142,4 +142,4 @@ function MerchantRequest() {
   );
 }
 
-export default MerchantRequest;
+export default NewTours;

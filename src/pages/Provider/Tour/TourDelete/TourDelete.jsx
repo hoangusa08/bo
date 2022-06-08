@@ -2,7 +2,7 @@
 import MainLayout from "layout/MainLayout/MainLayout";
 import { React } from "react";
 import { Table } from "reactstrap";
-import "./TourAwait.scss";
+import "./TourDelete.scss";
 
 const merchantRequests = [
   {

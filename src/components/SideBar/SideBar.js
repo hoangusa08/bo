@@ -10,37 +10,37 @@ import "./SideBar.scss";
 const menu_provider = [
   {
     label: "Tours Await",
-    path: "/manage-merchants",
+    path: "/tour-await",
     icon: ""
   },
   {
     label: "Tours Accept",
-    path: "/manage-merchants-request",
+    path: "/tour-accept",
     icon: ""
   },
   {
     label: "Tours Delete",
-    path: "/manage-merchants-request",
+    path: "/tour-delete",
     icon: ""
   },
   {
     label: "New Tours Booked",
-    path: "/manage-categories",
+    path: "/new-tour-booked",
     icon: ""
   },
   {
     label: "Tours Booked Accept",
-    path: "/manage-categories",
+    path: "/tour-booked-accept",
     icon: ""
   },
   {
     label: "Tours Booked complete",
-    path: "/manage-categories",
+    path: "/tour-booked-complete",
     icon: ""
   },
   {
     label: "Tours Booked Delete",
-    path: "/manage-categories",
+    path: "/tour-booked-delete",
     icon: ""
   },
   {
@@ -53,32 +53,32 @@ const menu_provider = [
 const menu_admin = [
   {
     label: "New Provider",
-    path: "/manage-merchants",
+    path: "/admin/new-provider",
     icon: ""
   },
   {
     label: "Provider Accept",
-    path: "/manage-merchants-request",
+    path: "/admin/provider-accept",
     icon: ""
   },
   {
     label: "Provider Reject",
-    path: "/manage-merchants-request",
+    path: "/admin/provider-reject",
     icon: ""
   },
   {
-    label: "New Project",
-    path: "/manage-merchants-request",
+    label: "New Tours",
+    path: "/admin/new-tours",
     icon: ""
   },
   {
-    label: "Project Accept",
-    path: "/manage-merchants-request",
+    label: "Tours Accept",
+    path: "/admin/tours-accept",
     icon: ""
   },
   {
-    label: "Project Reject",
-    path: "/manage-merchants-request",
+    label: "Tours Reject",
+    path: "/admin/tours-reject",
     icon: ""
   }
 ];
@@ -98,9 +98,7 @@ const SideBar = () => {
   useEffect(() => {
     let path = history?.location?.pathname;
     setCurentPath(path);
-    console.log(user?.role);
-    if (user?.role == USER_ROLE.ADMIN) {
-      console.log("a");
+    if (user?.role != USER_ROLE.ADMIN) {
       setMenu(menu_admin);
     } else {
       console.log("b");
@@ -121,7 +119,7 @@ const SideBar = () => {
       <nav className={show ? "showSidebar sidebar" : "sidebar"}>
         <div>
           <div className="sidebar-header">
-            <img src="" alt="logo" />
+            <h1>Du Lich Viet</h1>
           </div>
           <ul className="sidebar-list list-unstyled components">
             {menu?.map((item, key) => {

@@ -13,7 +13,7 @@ const style = (active) => {
     : { color: "red", fontWeight: "bold", textAlign: "center" };
 };
 
-function Merchant() {
+function Tour() {
   let noMerchant = 0;
   const [data, getMerchants] = useFetchMerchants();
   const [setStatusMerchants, , reload] = useSetStatusMerchant();
@@ -95,4 +95,4 @@ function Merchant() {
   );
 }
 
-export default Merchant;
+export default Tour;

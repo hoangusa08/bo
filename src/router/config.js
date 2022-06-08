@@ -6,15 +6,22 @@ import Login from "pages/Authentication/Login/Login";
 import Error from "pages/Error/Error.js";
 import EnterEmail from "pages/Authentication/FogotPassword/EnterEmail";
 import UpdatePassWord from "pages/Authentication/FogotPassword/UpdatePassWord";
-import CategoryManagement from "pages/Provider/Categories/CategoryManagement/CategoryManagement";
-import Tour from "pages/Provider/Tour/Tours/Tour";
 import TourAwait from "pages/Provider/Tour/TourAwait/TourAwait";
+import TourDelete from "pages/Provider/Tour/TourDelete/TourDelete";
+
 import CreateTour from "pages/Provider/Tour/CreateTour/CreateTour";
-import CategoryEdit from "pages/Provider/Categories/CategoryEdit/CategoryEdit";
-import SubCateManage from "pages/Provider/Categories/SubCateManage/SubCateManage";
-import NewSubCate from "pages/Provider/Categories/NewSubCate/NewSubCate";
-import EditSubCate from "pages/Provider/Categories/EditSubCate/EditSubCate";
 import Account from "pages/Account/Account";
+import Tour from "pages/Provider/Tour/Tours/Tour";
+import NewTourBooked from "pages/Provider/TourBooked/NewTourBooked/NewTourBooked";
+import TourBookedAccept from "pages/Provider/TourBooked/TourBookedAccept/TourBookedAccept";
+import TourBookedComplete from "pages/Provider/TourBooked/TourBookedComplete/TourBookedComplete";
+import TourBookedDelete from "pages/Provider/TourBooked/TourBookedDelete/TourBookedDelete";
+import NewProvider from "pages/Admin/Provider/NewProvider/NewProvider";
+import ProviderReject from "pages/Admin/Provider/ProviderReject/ProviderReject";
+import ProviderAccept from "pages/Admin/Provider/ProviderAccept/ProviderAccept";
+import NewTours from "pages/Admin/Tour/NewTours/NewTours";
+import ToursReject from "pages/Admin/Tour/ToursReject/ToursReject";
+import ToursAccept from "pages/Admin/Tour/ToursAccept/ToursAccept";
 
 export const routeConfig = [
   {
@@ -48,16 +55,16 @@ export const routeConfig = [
     component: TourAwait
   },
   {
-    path: "/manage-categories",
+    path: "/create-tour",
     isPrivate: false,
     exact: true,
-    component: CategoryManagement
+    component: CreateTour
   },
   {
-    path: "/manage-tour",
+    path: "/tour-delete",
     isPrivate: false,
     exact: true,
-    component: Tour
+    component: TourDelete
   },
 
   {
@@ -67,28 +74,70 @@ export const routeConfig = [
     component: CreateTour
   },
   {
-    path: "/manage-categories-edit/:id",
+    path: "/tour-accept",
     isPrivate: false,
     exact: true,
-    component: CategoryEdit
+    component: Tour
   },
   {
-    path: "/manage-sub-categories/:id",
+    path: "/new-tour-booked",
     isPrivate: false,
     exact: true,
-    component: SubCateManage
+    component: NewTourBooked
   },
   {
-    path: "/create-sub-categories/:id",
+    path: "/tour-booked-accept",
     isPrivate: false,
     exact: true,
-    component: NewSubCate
+    component: TourBookedAccept
   },
   {
-    path: "/edit-sub-categories/:id",
+    path: "/tour-booked-complete",
     isPrivate: false,
     exact: true,
-    component: EditSubCate
+    component: TourBookedComplete
+  },
+  {
+    path: "/tour-booked-delete",
+    isPrivate: false,
+    exact: true,
+    component: TourBookedDelete
+  },
+  {
+    path: "/admin/new-provider",
+    isPrivate: false,
+    exact: true,
+    component: NewProvider
+  },
+  {
+    path: "/admin/provider-reject",
+    isPrivate: false,
+    exact: true,
+    component: ProviderReject
+  },
+  {
+    path: "/admin/provider-accept",
+    isPrivate: false,
+    exact: true,
+    component: ProviderAccept
+  },
+  {
+    path: "/admin/new-tours",
+    isPrivate: false,
+    exact: true,
+    component: NewTours
+  },
+  {
+    path: "/admin/tours-reject",
+    isPrivate: false,
+    exact: true,
+    component: ToursReject
+  },
+  {
+    path: "/admin/tours-accept",
+    isPrivate: false,
+    exact: true,
+    component: ToursAccept
   },
   { path: "*", component: Error }
 ];
