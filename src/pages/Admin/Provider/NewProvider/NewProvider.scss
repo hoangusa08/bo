@@ -4,6 +4,10 @@
   position: relative;
   padding: 60px 40px;
 
+  .header-ctn{
+    display: flex;
+    justify-content: space-between;
+  }
   .btn-add {
     position: absolute;
     top: 70px;

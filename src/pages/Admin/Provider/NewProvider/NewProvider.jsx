@@ -1,5 +1,5 @@
-// /* eslint-disable*/
 import Pagination from "components/Pagination/Pagination";
+import Search from "components/Search/Search";
 import MainLayout from "layout/MainLayout/MainLayout";
 import { React } from "react";
 import { Table } from "reactstrap";
@@ -121,17 +121,20 @@ function NewProvider() {
   return (
     <MainLayout>
       <div className="overview-category">
-        <h2>Merchant Request</h2>
+        <div className="header-ctn">
+          <h2>New Providers</h2>
+          <Search />
+        </div>
         <div className="main">
           <Table bordered>
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>ID</th>
-                <th>Merchant Name</th>
+                <th>Company Name</th>
+                <th>Owner</th>
                 <th>Email</th>
-                <th>isActive</th>
-                <th>Status</th>
+                <th>Phone Number</th>
+                <th>Address</th>
                 <th>Action</th>
               </tr>
             </thead>

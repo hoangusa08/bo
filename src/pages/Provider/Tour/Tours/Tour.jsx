@@ -4,8 +4,9 @@ import { Table } from "reactstrap";
 import "./Tour.scss";
 import useFetchMerchants from "hook/useFetchMerchants";
 import useSetStatusMerchant from "hook/useSetStatusMerchant";
-import { Button } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+// import { Button } from "react-bootstrap";
+// import { useHistory } from "react-router-dom";
+import Search from "components/Search/Search";
 
 const style = (active) => {
   return active
@@ -17,7 +18,7 @@ function Tour() {
   let noMerchant = 0;
   const [data, getMerchants] = useFetchMerchants();
   const [setStatusMerchants, , reload] = useSetStatusMerchant();
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     getMerchants();
@@ -62,16 +63,9 @@ function Tour() {
   return (
     <MainLayout>
       <div className="overview-category">
-        <div className="merchant-header">
-          <h2>Tour Await</h2>
-          <div>
-            <Button
-              className="btn-success"
-              onClick={() => history.push("/manage-tour-create")}
-            >
-              Add Tour
-            </Button>
-          </div>
+        <div className="header-ctn">
+          <h2>Tours Accept</h2>
+          <Search />
         </div>
 
         <div className="main">

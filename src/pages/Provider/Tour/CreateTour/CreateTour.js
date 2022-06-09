@@ -26,6 +26,7 @@ export default function CreateTour() {
     categoryTd: 1,
     providerId: 1,
     provinceId: 1,
+    subDescription: "",
     tourImage: ["", "", "", ""],
     schedules: []
   });
@@ -270,6 +271,29 @@ export default function CreateTour() {
                     ))}
                   </select>
                 </div>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <div className="create-tour-body-item">
+                <h6 style={{ marginLeft: "5px" }} className="abc">
+                  Sub Description
+                </h6>
+                <input
+                  placeholder={"Enter tour  Sub Description"}
+                  value={dataSubmit.subDescription}
+                  onChange={(e) =>
+                    setDataSubmit({
+                      ...dataSubmit,
+                      subDescription: e.target.value
+                    })
+                  }
+                ></input>
+                <span style={{ color: "red" }}>
+                  {dataSubmit.subDescription === "" &&
+                    " Sub Description is requied"}
+                </span>
               </div>
             </Col>
           </Row>

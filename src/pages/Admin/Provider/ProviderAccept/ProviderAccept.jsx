@@ -1,4 +1,6 @@
 // /* eslint-disable*/
+import Pagination from "components/Pagination/Pagination";
+import Search from "components/Search/Search";
 import MainLayout from "layout/MainLayout/MainLayout";
 import { React } from "react";
 import { Table } from "reactstrap";
@@ -103,13 +105,6 @@ function ProviderAccept() {
           </td>
           <td style={{ textAlign: "center" }}>{MerchantRequest.status}</td>
           <td>
-            <button
-              className="btn btn-success"
-              onClick={() => history.push("/manage-merchants-edit")}
-            >
-              Approve
-            </button>
-            &nbsp;&nbsp;&nbsp;
             <button className="btn btn-danger">Reject</button>
           </td>
         </tr>
@@ -120,23 +115,27 @@ function ProviderAccept() {
   return (
     <MainLayout>
       <div className="overview-category">
-        <h2>Merchant Request</h2>
+        <div className="header-ctn">
+          <h2>Providers Accept</h2>
+          <Search />
+        </div>
         <div className="main">
           <Table bordered>
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>ID</th>
-                <th>Merchant Name</th>
+                <th>Company Name</th>
+                <th>Owner</th>
                 <th>Email</th>
-                <th>isActive</th>
-                <th>Status</th>
+                <th>Phone Number</th>
+                <th>Address</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>{tableMerchantRequest}</tbody>
           </Table>
         </div>
+        <Pagination />
       </div>
     </MainLayout>
   );

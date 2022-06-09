@@ -1,4 +1,6 @@
 // /* eslint-disable*/
+import Pagination from "components/Pagination/Pagination";
+import Search from "components/Search/Search";
 import MainLayout from "layout/MainLayout/MainLayout";
 import { React } from "react";
 import { Table } from "reactstrap";
@@ -96,7 +98,6 @@ function NewTours() {
             {++noMerchant}
           </th>
           <td>{MerchantRequest._id}</td>
-          <td>{MerchantRequest.name}</td>
           <td>{MerchantRequest.email}</td>
           <td style={style(MerchantRequest.isActive)}>
             {MerchantRequest.isActive ? "Active" : "Block"}
@@ -120,23 +121,26 @@ function NewTours() {
   return (
     <MainLayout>
       <div className="overview-category">
-        <h2>Merchant Request</h2>
+        <div className="header-ctn">
+          <h2>New Tour</h2>
+          <Search />
+        </div>
         <div className="main">
           <Table bordered>
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>ID</th>
-                <th>Merchant Name</th>
-                <th>Email</th>
-                <th>isActive</th>
-                <th>Status</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Company</th>
+                <th>Descripttion</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>{tableMerchantRequest}</tbody>
           </Table>
         </div>
+        <Pagination />
       </div>
     </MainLayout>
   );

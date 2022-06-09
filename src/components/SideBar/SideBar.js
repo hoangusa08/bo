@@ -9,6 +9,11 @@ import "./SideBar.scss";
 
 const menu_provider = [
   {
+    label: "Create Tour",
+    path: "/create-tour",
+    icon: ""
+  },
+  {
     label: "Tours Await",
     path: "/tour-await",
     icon: ""
@@ -98,7 +103,7 @@ const SideBar = () => {
   useEffect(() => {
     let path = history?.location?.pathname;
     setCurentPath(path);
-    if (user?.role != USER_ROLE.ADMIN) {
+    if (user?.role == USER_ROLE.ADMIN) {
       setMenu(menu_admin);
     } else {
       console.log("b");

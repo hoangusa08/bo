@@ -1,4 +1,6 @@
 // /* eslint-disable*/
+import Pagination from "components/Pagination/Pagination";
+import Search from "components/Search/Search";
 import MainLayout from "layout/MainLayout/MainLayout";
 import { React } from "react";
 import { Table } from "reactstrap";
@@ -120,7 +122,10 @@ function MerchantRequest() {
   return (
     <MainLayout>
       <div className="overview-category">
-        <h2>Merchant Request</h2>
+        <div className="header-ctn">
+          <h2>Tour Delete</h2>
+          <Search />
+        </div>
         <div className="main">
           <Table bordered>
             <thead>
@@ -137,6 +142,7 @@ function MerchantRequest() {
             <tbody>{tableMerchantRequest}</tbody>
           </Table>
         </div>
+        <Pagination />
       </div>
     </MainLayout>
   );
