@@ -7,6 +7,8 @@ import { React, useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import "./TourAwait.scss";
 import { SatusConstant } from "assets/constants/StatusConstant";
+import http from "core/services/httpService";
+import { pushToast } from "components/Toast";
 
 function TourAwait() {
   const [data, getTour] = useFetchTourProvider();
@@ -19,13 +21,17 @@ function TourAwait() {
   const tableTour = data?.tours?.map((tour, index) => {
     return (
       <tr key={index}>
-        <th scope="row">{index}</th>
+        <th scope="row">{index + 1}</th>
         <td>{tour?.name}</td>
         <td>{tour?.category}</td>
         <td>{tour?.subDescription}</td>
         <td>{tour?.province}</td>
         <td>
-          <button className="btn btn-danger" disabled={tour?.isDelete}>
+          <button
+            className="btn btn-danger"
+            disabled={tour?.isDelete === "true"}
+            onClick={() => handlDeleteTour(tour.id)}
+          >
             Delete
           </button>
         </td>
@@ -43,6 +49,17 @@ function TourAwait() {
         getTour(SatusConstant.WAITING, data?.page - 1, search);
       }
     }
+  };
+
+  const handlDeleteTour = async (id) => {
+    await http
+      .post(`/provider/deteleTour/${id}/true`)
+      .then(() => {
+        getTour(SatusConstant.WAITING, data?.page, search);
+      })
+      .catch((error) => {
+        pushToast("error", error.message);
+      });
   };
 
   return (
