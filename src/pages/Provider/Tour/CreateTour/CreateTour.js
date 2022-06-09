@@ -9,7 +9,7 @@ import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import DatePicker from "react-multi-date-picker";
 import DatePanel from "react-multi-date-picker/plugins/date_panel";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import "./CreateTour.scss";
 
 const format = "DD-MM-YYYY";
@@ -17,7 +17,7 @@ const format = "DD-MM-YYYY";
 export default function CreateTour() {
   const [cates] = useFetchCategories();
   const [provinces] = useFetchProvince();
-  const history = useHistory();
+  // const history = useHistory();
   const [dataSubmit, setDataSubmit] = useState({
     name: "",
     adultPrice: "",
@@ -26,6 +26,7 @@ export default function CreateTour() {
     categoryTd: 1,
     providerId: 1,
     provinceId: 1,
+    numberDate: 0,
     subDescription: "",
     tourImage: ["", "", "", ""],
     schedules: []
@@ -58,7 +59,7 @@ export default function CreateTour() {
         pushToast("success", response.message);
         console.log(response);
         // setIsLoading(false);
-        history.push("/manage-tour");
+        // history.push("/manage-tour");
       })
       .catch((error) => {
         pushToast("error", error.message);
@@ -292,6 +293,25 @@ export default function CreateTour() {
                 ></input>
                 <span style={{ color: "red" }}>
                   {dataSubmit.subDescription === "" &&
+                    " Sub Description is requied"}
+                </span>
+              </div>
+            </Col>
+            <Col>
+              <div className="create-tour-body-item">
+                <h6 style={{ marginLeft: "5px" }}>Number Date</h6>
+                <input
+                  placeholder={"Enter tour Number Date"}
+                  value={dataSubmit.numberDate}
+                  onChange={(e) =>
+                    setDataSubmit({
+                      ...dataSubmit,
+                      numberDate: e.target.value
+                    })
+                  }
+                ></input>
+                <span style={{ color: "red" }}>
+                  {dataSubmit.numberDate === "" &&
                     " Sub Description is requied"}
                 </span>
               </div>

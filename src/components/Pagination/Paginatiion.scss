@@ -5,6 +5,10 @@
     text-align: center;
     margin-right: 10px;
     border-radius: 3px;
+    border: none;
     background-color: antiquewhite;
+    &:hover{
+      cursor: pointer;
+    }
   }
 }
