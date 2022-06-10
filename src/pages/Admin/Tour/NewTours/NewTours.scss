@@ -1,9 +1,13 @@
 @import "../../../../assets/scss/app.scss";
 
-.overview-category {
+.overview-tour-admin {
   position: relative;
   padding: 60px 40px;
 
+  .header-ctn{
+    display: flex;
+    justify-content: space-between;
+  }
   .btn-add {
     position: absolute;
     top: 70px;
@@ -12,6 +16,13 @@
 
   .main {
     margin-top: 20px;
+    .image-tour{
+      height: 50px;
+      &:hover{
+        transform: scale(5);
+        transition: all .2s ease-in-out;
+      }
+    }
   }
   button{
     margin-left: 5px;

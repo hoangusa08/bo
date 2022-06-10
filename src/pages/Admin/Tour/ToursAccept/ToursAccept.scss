@@ -12,6 +12,13 @@
 
   .main {
     margin-top: 20px;
+    .image-tour{
+      height: 50px;
+      &:hover{
+        transform: scale(5);
+        transition: all .2s ease-in-out;
+      }
+    }
   }
   button{
     margin-left: 5px;

@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setUserLocal, removeUserLocal } from "core/localStore";
+import {
+  setUserLocal,
+  removeUserLocal,
+  removeTokenLocal
+} from "core/localStore";
 import { pushToast } from "components/Toast";
 import http from "core/services/httpService";
 import { USER_ROLE } from "core/constants";
@@ -30,12 +34,15 @@ const slice = createSlice({
       }
 
       if (payload?.user?.role === USER_ROLE.ADMIN) {
-        window.location.href = "/manage-merchants";
+        window.location.href = "/admin/new-provider";
+      } else {
+        window.location.href = "/create-tour";
       }
     },
     logoutSuccess: (state) => {
       state.user = null;
       removeUserLocal();
+      removeTokenLocal();
       window.location.href = "/login";
     },
     setLoading: (state, action) => {

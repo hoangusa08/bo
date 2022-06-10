@@ -12,8 +12,11 @@ export const getToken = () => {
 
 // remove the token and user from the local storage
 export const removeUserLocal = () => {
-  localStorage.removeItem("token");
   localStorage.removeItem("user");
+};
+
+export const removeTokenLocal = () => {
+  localStorage.removeItem("token");
 };
 
 // set the token and user from the local storage
