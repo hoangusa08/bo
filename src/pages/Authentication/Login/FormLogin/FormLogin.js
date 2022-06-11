@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
@@ -78,26 +77,6 @@ function FormLogin() {
           {error.password && touched.password && (
             <p className="errors">{error.password}</p>
           )}
-        </div>
-
-        <div className="login-form-group remember-forgot-group">
-          <label className="login-form-group-remember" name="rememberMe">
-            <p>Remember me</p>
-            <input
-              type="checkbox"
-              name="isRemember"
-              // value={values.isRemember}
-              defaultChecked={values.isRemember}
-              onChange={formik.handleChange}
-            />
-            <span className="remeber-mark"></span>
-          </label>
-
-          <div className="login-form-forgot">
-            <Link to="/forgot-password-enter-email" className="forgot-password">
-              Forgot password
-            </Link>
-          </div>
         </div>
         <div className="login-form-submit">
           <button className="login-form-submit-btn" type="submit">

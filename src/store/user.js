@@ -64,6 +64,8 @@ export const { loginSuccess, logoutSuccess, setLoading, setHasProfile } =
 
 export const login = (values) => async (dispatch) => {
   try {
+    removeUserLocal();
+    removeTokenLocal();
     dispatch(setLoading({ loading: true }));
     const data = await http.post("/authen/login/adminandprovider", {
       email: values.email,

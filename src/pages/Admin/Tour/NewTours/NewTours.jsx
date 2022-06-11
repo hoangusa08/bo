@@ -92,7 +92,7 @@ function NewTours() {
                 <th>Category</th>
                 <th>Provider</th>
                 <th>Descripttion</th>
-                <th style={{ width: "200px" }}>Action</th>
+                <th style={{ width: "250px" }}>Action</th>
               </tr>
             </thead>
             <tbody>{tableTour}</tbody>

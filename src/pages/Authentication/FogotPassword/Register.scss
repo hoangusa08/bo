@@ -1,9 +1,10 @@
 @import "../../../assets/scss/app.scss";
 $main-color: #df7112;
-.fogot-password-wrapper {
+.register-password-wrapper {
   display: flex;
   height: 100%;
-  .fogot-back-btn {
+  overflow: auto;
+  .register-back-btn {
     background-image: url("../../../assets/images/icons/back-button.svg");
     min-width: 40px;
     height: 40px;
@@ -11,11 +12,11 @@ $main-color: #df7112;
     margin-top: 15px;
     cursor: pointer;
   }
-  .fogot-main {
+  .register-main {
     margin-left: 50px;
     position: relative;
     width: 100%;
-    .fogot-reset-title {
+    .register-reset-title {
       font-weight: 600;
       font-size: 30px;
       line-height: 48px;
@@ -24,18 +25,24 @@ $main-color: #df7112;
       display: flex;
       align-items: center;
     }
-    .fogot-form-email {
+    .register-form-email {
       position: absolute;
       top: 100px;
-      .fogot-form-group {
+      width: 100%;
+      .register-form-group {
         margin-bottom: 30px;
-        .fogot-text-form-fogot {
+        .register-text-form-register {
           line-height: 22, 4px;
           font-size: 14px;
           font-weight: 400;
           color: #3c3737;
         }
-        .fogot-email-fogot {
+        .bank{
+          width: 100%;
+          height: 40px;
+          padding-left: 10px;
+        }
+        .register-email-register {
           padding: 0 10px;
           width: 100%;
           margin-top: 10px;
@@ -48,15 +55,15 @@ $main-color: #df7112;
           margin: 4px 0 0 0;
         }
       }
-      .fogot-btn-submit {
+      .register-btn-submit {
         width: 100%;
         border-radius: 2px;
         height: 40px;
         line-height: 24px;
         font-size: 14px;
         font-weight: 500;
-        border: solid $main-color;
-        background-color: $main-color;
+        border: solid #0b79c1;
+        background-color: #0b79c1;
         color: #ffffff;
       }
     }

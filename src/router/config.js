@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 
 import Login from "pages/Authentication/Login/Login";
 import Error from "pages/Error/Error.js";
-import EnterEmail from "pages/Authentication/FogotPassword/EnterEmail";
-import UpdatePassWord from "pages/Authentication/FogotPassword/UpdatePassWord";
+import Register from "pages/Authentication/FogotPassword/Register";
 import TourAwait from "pages/Provider/Tour/TourAwait/TourAwait";
 import TourDelete from "pages/Provider/Tour/TourDelete/TourDelete";
 
@@ -37,16 +36,10 @@ export const routeConfig = [
     component: Account
   },
   {
-    path: "/forgot-password-enter-email",
+    path: "/register",
     isPrivate: false,
     exact: true,
-    component: EnterEmail
-  },
-  {
-    path: "/forgot-password-update-password/:token",
-    isPrivate: false,
-    exact: true,
-    component: UpdatePassWord
+    component: Register
   },
   {
     path: "/tour-await",

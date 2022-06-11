@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AuthLayout from "layout/AuthLayout/AuthLayout";
+import Provider from "assets/images/provider.jpg";
 
 import FormLogin from "./FormLogin/FormLogin";
 import { pushToast } from "components/Toast";
@@ -14,8 +15,18 @@ const Login = () => {
   return (
     <AuthLayout>
       <div className="login-wrapper">
-        <h2 className="login-title">Log In</h2>
-        <p>Hello and welcome !</p>
+        <div className="login-title">
+          <div>
+            <h2 className="title">Log In</h2>
+            <p>Hello and welcome !</p>
+          </div>
+          <div style={{ marginTop: "15px" }}>
+            <Link className="register-login" to="/register">
+              <img className="register-img" src={Provider} alt="" />
+              Register to Provider
+            </Link>
+          </div>
+        </div>
         <div className="login-form">
           <FormLogin />
         </div>
