@@ -1,7 +1,4 @@
 import MyCkeditor from "components/CkEditor/Editor";
-// import Loading from "components/Loading/Loading";
-import { pushToast } from "components/Toast";
-import http from "core/services/httpService";
 import useFetchCategories from "hook/useFetchCategories";
 import useFetchProvince from "hook/useFetchProvince";
 import MainLayout from "layout/MainLayout/MainLayout";
@@ -10,11 +7,11 @@ import { Col, Row } from "react-bootstrap";
 import DatePicker from "react-multi-date-picker";
 import DatePanel from "react-multi-date-picker/plugins/date_panel";
 import { useHistory } from "react-router-dom";
-import "./CreateTour.scss";
+import "./TourDetail.scss";
 
 const format = "DD-MM-YYYY";
 
-export default function CreateTour() {
+export default function TourDetail() {
   const [cates] = useFetchCategories();
   const [provinces] = useFetchProvince();
   const history = useHistory();
@@ -29,9 +26,9 @@ export default function CreateTour() {
     tourImage: ["", "", "", ""],
     schedules: []
   });
+  const id = window.location.href.split("/");
 
   const [dates, setDates] = useState([]);
-  // const [isLoading, setIsLoading] = React.useState(false);
 
   const handleImages = (e, index) => {
     const temp = [...dataSubmit.tourImage];
@@ -39,38 +36,9 @@ export default function CreateTour() {
     setDataSubmit({ ...dataSubmit, tourImage: temp });
   };
 
-  const handleSubmit = () => {
-    if (dataSubmit.name === "") {
-      return;
-    }
-    console.log({
-      ...dataSubmit,
-      schedules: dates.map((date) => date.format())
-    });
-    // setIsLoading(true);
-    http
-      .post("/provider/createTour", {
-        ...dataSubmit,
-        schedules: dates.map((date) => date.format())
-      })
-      .then((response) => {
-        pushToast("success", response.message);
-        console.log(response);
-        // setIsLoading(false);
-        history.push("/manage-tour");
-      })
-      .catch((error) => {
-        pushToast("error", error.message);
-        // setIsLoading(false);
-      });
-  };
-
   const handleEditor = (value) => {
     setDataSubmit({ ...dataSubmit, description: value });
   };
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
 
   React.useEffect(() => {
     console.log(dataSubmit);
@@ -83,9 +51,9 @@ export default function CreateTour() {
           <h3>Create Tour</h3>
           <button
             className="btn btn-primary save"
-            onClick={() => handleSubmit()}
+            onClick={() => history.push(`/edit-tour/${id[id.length - 1]}`)}
           >
-            Save
+            Edit
           </button>
         </div>
         <div className="create-tour-body">

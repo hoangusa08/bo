@@ -9,11 +9,12 @@ import "./TourAwait.scss";
 import { SatusConstant } from "assets/constants/StatusConstant";
 import http from "core/services/httpService";
 import { pushToast } from "components/Toast";
+import { useHistory } from "react-router-dom";
 
 function TourAwait() {
   const [data, getTour] = useFetchTourProvider();
   const [search, setSearch] = useState("");
-
+  const history = useHistory();
   useEffect(() => {
     getTour(SatusConstant.WAITING, 0, search);
   }, []);
@@ -33,6 +34,13 @@ function TourAwait() {
             onClick={() => handlDeleteTour(tour.id)}
           >
             Delete
+          </button>
+          <button
+            className="btn btn-success"
+            disabled={tour?.isDelete === "true"}
+            onClick={() => history.push(`/detail-tour/${tour.id}`)}
+          >
+            Detail
           </button>
         </td>
       </tr>
@@ -82,7 +90,7 @@ function TourAwait() {
                 <th>Category</th>
                 <th>Sub Description</th>
                 <th>Location Start</th>
-                <th style={{ width: "100px" }}>Action</th>
+                <th style={{ width: "180px" }}>Action</th>
               </tr>
             </thead>
             <tbody>{tableTour}</tbody>

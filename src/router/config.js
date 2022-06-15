@@ -21,6 +21,8 @@ import ProviderAccept from "pages/Admin/Provider/ProviderAccept/ProviderAccept";
 import NewTours from "pages/Admin/Tour/NewTours/NewTours";
 import ToursReject from "pages/Admin/Tour/ToursReject/ToursReject";
 import ToursAccept from "pages/Admin/Tour/ToursAccept/ToursAccept";
+import EditTour from "pages/Provider/Tour/EditTour/EditTour";
+import TourDetail from "pages/Provider/Tour/TourDetail/TourDetail";
 
 export const routeConfig = [
   {
@@ -71,6 +73,18 @@ export const routeConfig = [
     isPrivate: false,
     exact: true,
     component: Tour
+  },
+  {
+    path: "/detail-tour/:id",
+    isPrivate: false,
+    exact: true,
+    component: TourDetail
+  },
+  {
+    path: "/edit-tour/:id",
+    isPrivate: false,
+    exact: true,
+    component: EditTour
   },
   {
     path: "/new-tour-booked",
