@@ -73,7 +73,7 @@ function NewTourBooked() {
                 <th>Children Number</th>
                 <th>Total</th>
                 <th>Schedule</th>
-                <th style={{ width: "200px" }}>Action</th>
+                <th style={{ width: "220px" }}>Action</th>
               </tr>
             </thead>
             <tbody>{tableRequest}</tbody>

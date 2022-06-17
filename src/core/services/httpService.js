@@ -33,12 +33,12 @@ http.interceptors.response.use(
   },
   (error) => {
     // Handle errors
-    console.error("error: ", error?.response?.data);
+    console.error("error: ", error.message);
     const data = error.response?.data;
     if (data && data.message) {
       throw data;
     } else {
-      error.message = "Some thing wrong";
+      // error.message = "Some thing wrong";
       throw error;
     }
   }

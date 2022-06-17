@@ -90,7 +90,7 @@ function TourAwait() {
                 <th>Category</th>
                 <th>Sub Description</th>
                 <th>Location Start</th>
-                <th style={{ width: "180px" }}>Action</th>
+                <th style={{ width: "200px" }}>Action</th>
               </tr>
             </thead>
             <tbody>{tableTour}</tbody>

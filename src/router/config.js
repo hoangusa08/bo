@@ -33,7 +33,7 @@ export const routeConfig = [
   },
   {
     path: "/account",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: Account
   },
@@ -45,104 +45,104 @@ export const routeConfig = [
   },
   {
     path: "/tour-await",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: TourAwait
   },
   {
     path: "/create-tour",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: CreateTour
   },
   {
     path: "/tour-delete",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: TourDelete
   },
 
   {
     path: "/manage-tour-create",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: CreateTour
   },
   {
     path: "/tour-accept",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: Tour
   },
   {
     path: "/detail-tour/:id",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: TourDetail
   },
   {
     path: "/edit-tour/:id",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: EditTour
   },
   {
     path: "/new-tour-booked",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: NewTourBooked
   },
   {
     path: "/tour-booked-accept",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: TourBookedAccept
   },
   {
     path: "/tour-booked-complete",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: TourBookedComplete
   },
   {
     path: "/tour-booked-delete",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: TourBookedDelete
   },
   {
     path: "/admin/new-provider",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: NewProvider
   },
   {
     path: "/admin/provider-reject",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: ProviderReject
   },
   {
     path: "/admin/provider-accept",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: ProviderAccept
   },
   {
     path: "/admin/new-tours",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: NewTours
   },
   {
     path: "/admin/tours-reject",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: ToursReject
   },
   {
     path: "/admin/tours-accept",
-    isPrivate: false,
+    isPrivate: true,
     exact: true,
     component: ToursAccept
   },
