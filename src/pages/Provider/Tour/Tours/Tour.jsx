@@ -9,6 +9,9 @@ import { useHistory } from "react-router-dom";
 import http from "core/services/httpService";
 import { pushToast } from "components/Toast";
 import Pagination from "components/Pagination/Pagination";
+import Delete from "assets/images/delete.png";
+import Detail from "assets/images/detail1.png";
+import Cmt from "assets/images/cmt.jpg";
 
 function Tour() {
   const [data, getTour] = useFetchTourProvider();
@@ -28,18 +31,25 @@ function Tour() {
         <td>{tour?.province}</td>
         <td>
           <button
-            className="btn btn-danger"
+            className="btn-delete"
             disabled={tour?.isDelete === "true"}
             onClick={() => handlDeleteTour(tour.id)}
           >
-            Delete
+            <img className="delete" src={Delete} />
           </button>
           <button
-            className="btn btn-success"
+            className="btn-detail"
             disabled={tour?.isDelete === "true"}
             onClick={() => history.push(`/detail-tour/${tour.id}`)}
           >
-            Detail
+            <img className="detail" src={Detail} />
+          </button>
+          <button
+            className="btn-cmt"
+            disabled={tour?.isDelete === "true"}
+            onClick={() => history.push(`/view/view-rate/${tour.id}`)}
+          >
+            <img className="detail" src={Cmt} />
           </button>
         </td>
       </tr>
@@ -73,7 +83,7 @@ function Tour() {
     <MainLayout>
       <div className="overview-category">
         <div className="header-ctn">
-          <h2>Tours Accept</h2>
+          <h2>Tours được chấp nhận</h2>
           <Search
             setSearch={setSearch}
             search={search}
@@ -86,11 +96,11 @@ function Tour() {
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Sub Description</th>
-                <th>Location Start</th>
-                <th style={{ width: "250px" }}>Action</th>
+                <th>Tên</th>
+                <th>Thể loại</th>
+                <th>Mô tả</th>
+                <th>Địa điểm bắt đầu</th>
+                <th style={{ width: "170px" }}>Hành động</th>
               </tr>
             </thead>
             <tbody>{tableTour}</tbody>

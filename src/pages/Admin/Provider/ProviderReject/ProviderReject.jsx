@@ -9,6 +9,7 @@ import MainLayout from "layout/MainLayout/MainLayout";
 import { React, useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import "./ProviderReject.scss";
+import Recover from "assets/images/recover.png";
 
 function ProviderReject() {
   const [search, setSearch] = useState("");
@@ -53,12 +54,12 @@ function ProviderReject() {
         <td>{provider?.email}</td>
         <td>{provider?.phoneNumber}</td>
         <td>{provider?.address}</td>
-        <td style={{ width: "150px" }}>
+        <td style={{ width: "100px" }}>
           <button
-            className="btn btn-success"
+            className="btn-recover"
             onClick={() => handleStatus(SatusConstant.ACCEPT, provider.id)}
           >
-            Accept
+            <img className="detail" src={Recover} />
           </button>
         </td>
       </tr>
@@ -69,7 +70,7 @@ function ProviderReject() {
     <MainLayout>
       <div className="overview-category">
         <div className="header-ctn">
-          <h2>Providers Reject</h2>
+          <h2>Nhà cung cấp bị từ chối</h2>
           <Search
             setSearch={setSearch}
             search={search}
@@ -81,11 +82,11 @@ function ProviderReject() {
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>Company Name</th>
-                <th>Owner</th>
+                <th>Tên công ty</th>
+                <th>Chủ sở hữu</th>
                 <th>Email</th>
-                <th>Phone Number</th>
-                <th>Address</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
                 <th>Action</th>
               </tr>
             </thead>

@@ -9,17 +9,17 @@ export default function Pagination({ data, handleSearch }) {
         disabled={data?.page === 0}
         onClick={() => handleSearch(false, false)}
       >
-        Previous
+        Trước
       </button>
       <button
         className="pre"
         disabled={data?.page + 1 === data?.total}
         onClick={() => handleSearch(true, false)}
       >
-        Next
+        Sau
       </button>
       <div>
-        Page {data?.page + 1}/{data?.total}
+        Trang {data?.page + 1}/{data?.total}
       </div>
     </div>
   );

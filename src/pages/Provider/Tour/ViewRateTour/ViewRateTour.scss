@@ -1,0 +1,51 @@
+.rate-tour{
+    padding: 50px;
+    .back{
+        width: 40px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 50%;
+        background-color: white;
+        &:hover{
+            cursor: pointer;
+            background-color: rgb(217, 226, 226);
+        }
+    }
+    .rate-ctn{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        border-radius: 5px;
+        background-color: #f0f2f5;
+        padding: 10px;
+        .rate-header{
+            width: 50px;
+            align-items: center;
+            justify-content: center;
+            margin: 0px 10px;
+            img{
+                margin-top: 10px;
+            }
+        }
+        .rate-bottom{
+            align-items: center;
+            padding: 20px;
+            .btn-delete{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border: 1px solid #5294e2;
+                img{
+                    border-radius: 50%;
+                }
+            }
+        }
+        .body{
+           flex: 1;
+           .comment{
+            margin-top: 10px;
+            font-size: 18px;
+           }
+        }
+    }
+}

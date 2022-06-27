@@ -9,6 +9,7 @@ import MainLayout from "layout/MainLayout/MainLayout";
 import { React, useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import "./ProviderAccept.scss";
+import Delete from "assets/images/delete.png";
 
 function ProviderAccept() {
   const [search, setSearch] = useState("");
@@ -53,12 +54,12 @@ function ProviderAccept() {
         <td>{provider?.email}</td>
         <td>{provider?.phoneNumber}</td>
         <td>{provider?.address}</td>
-        <td style={{ width: "150px" }}>
+        <td style={{ width: "100px" }}>
           <button
-            className="btn btn-danger"
+            className="btn-delete"
             onClick={() => handleStatus(SatusConstant.REFUSE, provider.id)}
           >
-            Reject
+            <img className="delete" src={Delete} />
           </button>
         </td>
       </tr>
@@ -81,12 +82,12 @@ function ProviderAccept() {
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>Company Name</th>
-                <th>Owner</th>
+                <th>Tên công ty</th>
+                <th>Chủ sở hữu</th>
                 <th>Email</th>
-                <th>Phone Number</th>
-                <th>Address</th>
-                <th>Action</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Hành động</th>
               </tr>
             </thead>
             <tbody>{tableProvider}</tbody>

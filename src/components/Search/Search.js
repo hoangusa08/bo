@@ -6,7 +6,7 @@ export default function Search({ setSearch, search, handleSearch }) {
   return (
     <div className="search">
       <input value={search} onChange={(e) => setSearch(e.target.value)} />
-      <Button onClick={() => handleSearch(true, true)}>Search</Button>
+      <Button onClick={() => handleSearch(true, true)}>Tìm kiếm</Button>
     </div>
   );
 }

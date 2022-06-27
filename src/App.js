@@ -43,11 +43,6 @@ function App() {
 
     // getUserMe();
   }, []);
-
-  // if (authLoading && getToken()) {
-  //   return <Loading visible={authLoading} />;
-  // }
-
   return (
     <div className="content-wrapper">
       <BrowserRouter>

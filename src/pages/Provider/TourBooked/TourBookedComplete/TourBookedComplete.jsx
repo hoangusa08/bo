@@ -37,12 +37,12 @@ function TourBookedComplete() {
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>Customer</th>
-                <th>Tour</th>
-                <th>Adult Number</th>
-                <th>Children Number</th>
-                <th>Total</th>
-                <th>Schedule</th>
+                <th>Tên khách hàng</th>
+                <th>Tên tour</th>
+                <th>Người lớn</th>
+                <th>Trẻ em</th>
+                <th>Tổng tiền</th>
+                <th>Thời gian</th>
               </tr>
             </thead>
             <tbody>{tableRequest}</tbody>

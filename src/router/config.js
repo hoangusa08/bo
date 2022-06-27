@@ -23,6 +23,10 @@ import ToursReject from "pages/Admin/Tour/ToursReject/ToursReject";
 import ToursAccept from "pages/Admin/Tour/ToursAccept/ToursAccept";
 import EditTour from "pages/Provider/Tour/EditTour/EditTour";
 import TourDetail from "pages/Provider/Tour/TourDetail/TourDetail";
+import ViewRateTour from "pages/Provider/Tour/ViewRateTour/ViewRateTour";
+import Dashboard from "pages/Admin/Dashboard/Dashboard";
+import Categories from "pages/Admin/Categories/Categories";
+import Customer from "pages/Admin/Customer/Customer";
 
 export const routeConfig = [
   {
@@ -42,6 +46,12 @@ export const routeConfig = [
     isPrivate: false,
     exact: true,
     component: Register
+  },
+  {
+    path: "/view/view-rate/:id",
+    isPrivate: false,
+    exact: true,
+    component: ViewRateTour
   },
   {
     path: "/tour-await",
@@ -115,6 +125,24 @@ export const routeConfig = [
     isPrivate: true,
     exact: true,
     component: NewProvider
+  },
+  {
+    path: "/admin/categories",
+    isPrivate: true,
+    exact: true,
+    component: Categories
+  },
+  {
+    path: "/admin/customer",
+    isPrivate: true,
+    exact: true,
+    component: Customer
+  },
+  {
+    path: "/admin/dashboard",
+    isPrivate: true,
+    exact: true,
+    component: Dashboard
   },
   {
     path: "/admin/provider-reject",

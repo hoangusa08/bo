@@ -32,7 +32,6 @@ export default function EditTour() {
   });
 
   const [dates, setDates] = useState([]);
-  // const [isLoading, setIsLoading] = React.useState(false);
 
   const handleImages = (e, index) => {
     const temp = [...dataSubmit.tourImage];
@@ -48,7 +47,6 @@ export default function EditTour() {
       ...dataSubmit,
       schedules: dates.map((date) => date.format())
     });
-    // setIsLoading(true);
     http
       .post("/provider/createTour", {
         ...dataSubmit,
@@ -57,7 +55,6 @@ export default function EditTour() {
       .then((response) => {
         pushToast("success", response.message);
         console.log(response);
-        // setIsLoading(false);
         // history.push("/manage-tour");
       })
       .catch((error) => {
@@ -69,9 +66,6 @@ export default function EditTour() {
   const handleEditor = (value) => {
     setDataSubmit({ ...dataSubmit, description: value });
   };
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
 
   React.useEffect(() => {
     console.log(dataSubmit);
@@ -79,8 +73,8 @@ export default function EditTour() {
 
   return (
     <MainLayout>
-      <div className="create-tour">
-        <div className="create-tour-top">
+      <div className="edit-tour">
+        <div className="edit-tour-top">
           <h3>Edit Tour</h3>
           <button
             className="btn btn-primary save"
@@ -89,10 +83,10 @@ export default function EditTour() {
             Save
           </button>
         </div>
-        <div className="create-tour-body">
+        <div className="edit-tour-body">
           <Row>
             <Col>
-              <div className="create-tour-body-item">
+              <div className="edit-tour-body-item">
                 <h6 style={{ marginLeft: "5px" }}>Name</h6>
                 <input
                   placeholder={"Enter name tour"}
@@ -107,7 +101,7 @@ export default function EditTour() {
               </div>
             </Col>
             <Col>
-              <div className="create-tour-body-item">
+              <div className="edit-tour-body-item">
                 <h6 style={{ marginLeft: "5px" }}>Adult Price</h6>
                 <input
                   placeholder={"Enter Adult Price"}
@@ -124,7 +118,7 @@ export default function EditTour() {
           </Row>
           <Row>
             <Col>
-              <div className="create-tour-body-item">
+              <div className="edit-tour-body-item">
                 <h6 style={{ marginLeft: "5px" }}>Children Price</h6>
                 <input
                   placeholder={"Enter Children Price"}
@@ -139,7 +133,7 @@ export default function EditTour() {
               </div>
             </Col>
             <Col>
-              <div className="create-tour-body-item">
+              <div className="edit-tour-body-item">
                 <h6 style={{ marginLeft: "5px" }}>Schedules</h6>
 
                 <DatePicker
@@ -162,7 +156,7 @@ export default function EditTour() {
 
           <Row>
             <Col>
-              <div className="create-tour-body-item">
+              <div className="edit-tour-body-item">
                 <h6 style={{ marginLeft: "5px" }} className="abc">
                   Tour Image 1
                 </h6>
@@ -177,7 +171,7 @@ export default function EditTour() {
               </div>
             </Col>
             <Col>
-              <div className="create-tour-body-item">
+              <div className="edit-tour-body-item">
                 <h6 style={{ marginLeft: "5px" }} className="abc">
                   Tour Image
                 </h6>
@@ -194,7 +188,7 @@ export default function EditTour() {
           </Row>
           <Row>
             <Col>
-              <div className="create-tour-body-item">
+              <div className="edit-tour-body-item">
                 <h6 style={{ marginLeft: "5px" }} className="abc">
                   Tour Image
                 </h6>
@@ -209,7 +203,7 @@ export default function EditTour() {
               </div>
             </Col>
             <Col>
-              <div className="create-tour-body-item">
+              <div className="edit-tour-body-item">
                 <h6 style={{ marginLeft: "5px" }}>Tour Image 1</h6>
                 <input
                   placeholder={"Enter tour image"}
@@ -224,7 +218,7 @@ export default function EditTour() {
           </Row>
           <Row>
             <Col>
-              <div className="create-tour-body">
+              <div className="edit-tour-body">
                 <div className="select-ctn">
                   <span style={{ marginLeft: "5px", marginBottom: "3px" }}>
                     Category
@@ -249,7 +243,7 @@ export default function EditTour() {
               </div>
             </Col>
             <Col>
-              <div className="create-tour-body">
+              <div className="edit-tour-body">
                 <div className="select-ctn">
                   <span style={{ marginLeft: "5px", marginBottom: "3px" }}>
                     Location Start
@@ -276,7 +270,7 @@ export default function EditTour() {
           </Row>
           <Row>
             <Col>
-              <div className="create-tour-body-item">
+              <div className="edit-tour-body-item">
                 <h6 style={{ marginLeft: "5px" }} className="abc">
                   Sub Description
                 </h6>
@@ -297,7 +291,7 @@ export default function EditTour() {
               </div>
             </Col>
             <Col>
-              <div className="create-tour-body-item">
+              <div className="edit-tour-body-item">
                 <h6 style={{ marginLeft: "5px" }}>Number Date</h6>
                 <input
                   placeholder={"Enter tour Number Date"}

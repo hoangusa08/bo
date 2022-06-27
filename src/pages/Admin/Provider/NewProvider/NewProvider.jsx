@@ -8,6 +8,8 @@ import "./NewProvider.scss";
 import { SatusConstant } from "assets/constants/StatusConstant";
 import { pushToast } from "components/Toast";
 import http from "core/services/httpService";
+import Delete from "assets/images/delete.png";
+import Accept from "assets/images/accept.png";
 
 function NewProvider() {
   const [search, setSearch] = useState("");
@@ -52,19 +54,19 @@ function NewProvider() {
         <td>{provider?.email}</td>
         <td>{provider?.phoneNumber}</td>
         <td>{provider?.address}</td>
-        <td style={{ width: "250px" }}>
+        <td style={{ width: "150px" }}>
           <button
-            className="btn btn-success"
+            className="btn-accept"
             onClick={() => handleStatus(SatusConstant.ACCEPT, provider.id)}
           >
-            Approve
+            <img className="delete" src={Accept} />
           </button>
           &nbsp;&nbsp;&nbsp;
           <button
-            className="btn btn-danger"
+            className="btn-delete"
             onClick={() => handleStatus(SatusConstant.REFUSE, provider.id)}
           >
-            Reject
+            <img className="delete" src={Delete} />
           </button>
         </td>
       </tr>
@@ -75,7 +77,7 @@ function NewProvider() {
     <MainLayout>
       <div className="overview-category">
         <div className="header-ctn">
-          <h2>New Providers</h2>
+          <h2>Nhà cung cấp mới</h2>
           <Search
             setSearch={setSearch}
             search={search}
@@ -87,12 +89,12 @@ function NewProvider() {
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>Company Name</th>
-                <th>Owner</th>
+                <th>Tên công ty</th>
+                <th>Chủ sở hứu</th>
                 <th>Email</th>
-                <th>Phone Number</th>
-                <th>Address</th>
-                <th>Action</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Hành động</th>
               </tr>
             </thead>
             <tbody>{tableProvider}</tbody>

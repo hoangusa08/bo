@@ -8,6 +8,7 @@ import MainLayout from "layout/MainLayout/MainLayout";
 import { React, useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import "./TourDelete.scss";
+import Recover from "assets/images/recover.png";
 
 function TourDelete() {
   const [data, getTour] = useFetchTourDelete();
@@ -53,10 +54,10 @@ function TourDelete() {
         <td>{tour?.status}</td>
         <td>
           <button
-            className="btn btn-success"
+            className="btn-recover"
             onClick={() => handlDeleteTour(tour.id)}
           >
-            recover
+            <img className="detail" src={Recover} />
           </button>
         </td>
       </tr>
@@ -67,7 +68,7 @@ function TourDelete() {
     <MainLayout>
       <div className="overview-category">
         <div className="header-ctn">
-          <h2>Tour Delete</h2>
+          <h2>Tour đã xóa</h2>
           <Search
             setSearch={setSearch}
             search={search}
@@ -79,12 +80,12 @@ function TourDelete() {
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Sub Description</th>
-                <th>Location Start</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th>Tên</th>
+                <th>Thể loại</th>
+                <th>Mô tả</th>
+                <th>Địa điểm bắt đầu</th>
+                <th>Trạng thái</th>
+                <th style={{ width: "100px" }}>hành động</th>
               </tr>
             </thead>
             <tbody>{tableTour}</tbody>

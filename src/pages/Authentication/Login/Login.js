@@ -17,13 +17,13 @@ const Login = () => {
       <div className="login-wrapper">
         <div className="login-title">
           <div>
-            <h2 className="title">Log In</h2>
-            <p>Hello and welcome !</p>
+            <h2 className="title">Đăng nhập</h2>
+            <p>Xin chào và chào mừng !</p>
           </div>
           <div style={{ marginTop: "15px" }}>
             <Link className="register-login" to="/register">
               <img className="register-img" src={Provider} alt="" />
-              Register to Provider
+              Đăng kí làm nhà cung cấp
             </Link>
           </div>
         </div>

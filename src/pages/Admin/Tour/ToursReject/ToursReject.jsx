@@ -8,6 +8,7 @@ import MainLayout from "layout/MainLayout/MainLayout";
 import { React, useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import "./ToursReject.scss";
+import Recover from "assets/images/recover.png";
 
 function ToursReject() {
   const [search, setSearch] = useState("");
@@ -54,10 +55,10 @@ function ToursReject() {
         <td>{tour?.subDescription}</td>
         <td>
           <button
-            className="btn btn-success"
+            className="btn-recover"
             onClick={() => handleStatus("accept", tour.id)}
           >
-            Approve
+            <img className="detail" src={Recover} />
           </button>
         </td>
       </tr>
@@ -68,7 +69,7 @@ function ToursReject() {
     <MainLayout>
       <div className="overview-category">
         <div className="header-ctn">
-          <h2>Tour Reject</h2>
+          <h2>Tour bị từ chối</h2>
           <Search
             setSearch={setSearch}
             search={search}
@@ -80,12 +81,12 @@ function ToursReject() {
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Category</th>
-                <th>Provider</th>
-                <th>Descripttion</th>
-                <th style={{ width: "200px" }}>Action</th>
+                <th>Tên</th>
+                <th>Hình ảnh</th>
+                <th>Thể loại</th>
+                <th>Nhà cung cấp</th>
+                <th>Mô tả</th>
+                <th style={{ width: "100px" }}>Hành động</th>
               </tr>
             </thead>
             <tbody>{tableTour}</tbody>

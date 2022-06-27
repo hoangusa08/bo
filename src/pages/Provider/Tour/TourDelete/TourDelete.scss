@@ -12,8 +12,21 @@
 
   .main {
     margin-top: 20px;
+    .btn-recover{
+      width: 40px;
+      background-color: white;
+      border: 1px solid #90b58e;
+      border-radius: 50%;
+      &:hover{
+        background-color: rgb(144, 205, 175);
+      }
+      img{
+        width: 40px;
+      }
+    }
   }
   button{
     margin-left: 5px;
+    
   }
 }

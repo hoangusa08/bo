@@ -74,11 +74,11 @@ export default function Account() {
                       ) : null}
                     </div>
                     <div className="item">
-                      <h4>Full Name</h4>
+                      <h4>Tên người dùng</h4>
                       <Field
                         name="fullName"
                         className="form-input"
-                        placeholder="fullName"
+                        placeholder="Tên người dùng"
                         disabled={!isEdit}
                       />
                       {errors.fullName && touched.fullName ? (
@@ -86,11 +86,11 @@ export default function Account() {
                       ) : null}
                     </div>
                     <div className="item">
-                      <h4>Address</h4>
+                      <h4>Địa chỉ</h4>
                       <Field
                         name="address"
                         className="form-input"
-                        placeholder="Address"
+                        placeholder="Địa chỉ"
                         disabled={!isEdit}
                       />
                       {errors.address && touched.address ? (
@@ -98,11 +98,11 @@ export default function Account() {
                       ) : null}
                     </div>
                     <div className="item">
-                      <h4>Phone Number</h4>
+                      <h4>Số điện thoại</h4>
                       <Field
                         name="phoneNumber"
                         className="form-input"
-                        placeholder="Phone Number"
+                        placeholder="Số điện thoại"
                         disabled={!isEdit}
                       />
                       {errors.phoneNumber && touched.phoneNumber ? (
@@ -110,11 +110,11 @@ export default function Account() {
                       ) : null}
                     </div>
                     <div className="item">
-                      <h4>Username</h4>
+                      <h4>Tên tài khoản</h4>
                       <Field
                         name="username"
                         className="form-input"
-                        placeholder="Username"
+                        placeholder="Tên tài khoản"
                         disabled={!isEdit}
                       />
                       {errors.username && touched.username ? (
@@ -122,7 +122,7 @@ export default function Account() {
                       ) : null}
                     </div>
                     <button className="edit-account">
-                      {isEdit ? "Submit" : "Edit"}{" "}
+                      {isEdit ? "Lưu" : "Chỉnh sửa"}
                     </button>
                   </div>
                 </div>

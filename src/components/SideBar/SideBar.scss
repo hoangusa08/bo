@@ -2,6 +2,7 @@
 @import "assets/scss/foundation/mixin/responsive";
 
 .sidebar-wrapper {
+  z-index: 20000;
   .sidebar {
     min-width: 240px;
     max-width: 240px;
@@ -32,7 +33,7 @@
     }
 
     &-list {
-      margin-top: 70px;
+      margin-top: 10px;
 
       @include mq_down(sp) {
         display: none;

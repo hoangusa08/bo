@@ -9,42 +9,42 @@ import "./SideBar.scss";
 
 const menu_provider = [
   {
-    label: "Create Tour",
+    label: "Tạo Tour",
     path: "/create-tour",
     icon: ""
   },
   {
-    label: "Tours Await",
+    label: "Tours đang chờ xác nhận",
     path: "/tour-await",
     icon: ""
   },
   {
-    label: "Tours Accept",
+    label: "Tours Đã xác nhận",
     path: "/tour-accept",
     icon: ""
   },
   {
-    label: "Tours Delete",
+    label: "Tours đã xóa",
     path: "/tour-delete",
     icon: ""
   },
   {
-    label: "New Tours Booked",
+    label: "Tours được đặt",
     path: "/new-tour-booked",
     icon: ""
   },
   {
-    label: "Tours Booked Accept",
+    label: "Tours đặt được xác nhận",
     path: "/tour-booked-accept",
     icon: ""
   },
   {
-    label: "Tours Booked complete",
+    label: "Tours đặt đã hoàn thành",
     path: "/tour-booked-complete",
     icon: ""
   },
   {
-    label: "Tours Booked Delete",
+    label: "Tours đặt đã từ chối",
     path: "/tour-booked-delete",
     icon: ""
   },
@@ -57,33 +57,48 @@ const menu_provider = [
 
 const menu_admin = [
   {
-    label: "New Provider",
+    label: "Trang chủ",
+    path: "/admin/dashboard",
+    icon: ""
+  },
+  {
+    label: "Nhà cung cấp mới",
     path: "/admin/new-provider",
     icon: ""
   },
   {
-    label: "Provider Accept",
+    label: "Nhà cũng cấp đã chấp nhận",
     path: "/admin/provider-accept",
     icon: ""
   },
   {
-    label: "Provider Reject",
+    label: "Nhà cũng cấp đã từ chối",
     path: "/admin/provider-reject",
     icon: ""
   },
   {
-    label: "New Tours",
+    label: "Tours mới",
     path: "/admin/new-tours",
     icon: ""
   },
   {
-    label: "Tours Accept",
+    label: "Tour đã chấp nhận",
     path: "/admin/tours-accept",
     icon: ""
   },
   {
-    label: "Tours Reject",
+    label: "Tours đã từ chối",
     path: "/admin/tours-reject",
+    icon: ""
+  },
+  {
+    label: "Khách hàng",
+    path: "/admin/customer",
+    icon: ""
+  },
+  {
+    label: "Loại tour",
+    path: "/admin/categories",
     icon: ""
   }
 ];
@@ -147,7 +162,9 @@ const SideBar = () => {
         </div>
         <div className="sidebar-footer">
           <div className="d-flex align-items-center justify-content-between">
-            <span className="mr-2 user-name">{user?.name?.toUpperCase()}</span>
+            <span className="mr-2 user-name">
+              {user?.nameConpany ? user?.nameConpany?.toUpperCase() : "Admin"}
+            </span>
             <i className="fas fa-sign-out-alt" onClick={() => onLogOut()}></i>
           </div>
         </div>

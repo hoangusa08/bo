@@ -8,6 +8,8 @@ import MainLayout from "layout/MainLayout/MainLayout";
 import { React, useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import "./NewTours.scss";
+import Delete from "assets/images/delete.png";
+import Accept from "assets/images/accept.png";
 
 function NewTours() {
   const [search, setSearch] = useState("");
@@ -54,17 +56,17 @@ function NewTours() {
         <td>{tour?.subDescription}</td>
         <td>
           <button
-            className="btn btn-success"
+            className="btn-accept"
             onClick={() => handleStatus("accept", tour.id)}
           >
-            Approve
+            <img className="delete" src={Accept} />
           </button>
           &nbsp;&nbsp;&nbsp;
           <button
-            className="btn btn-danger"
+            className="btn-delete"
             onClick={() => handleStatus("refuse", tour.id)}
           >
-            Reject
+            <img className="delete" src={Delete} />
           </button>
         </td>
       </tr>
@@ -75,7 +77,7 @@ function NewTours() {
     <MainLayout>
       <div className="overview-tour-admin">
         <div className="header-ctn">
-          <h2>New Tour</h2>
+          <h2>Tour mới</h2>
           <Search
             setSearch={setSearch}
             search={search}
@@ -92,7 +94,7 @@ function NewTours() {
                 <th>Category</th>
                 <th>Provider</th>
                 <th>Descripttion</th>
-                <th style={{ width: "250px" }}>Action</th>
+                <th style={{ width: "150px" }}>Action</th>
               </tr>
             </thead>
             <tbody>{tableTour}</tbody>

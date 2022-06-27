@@ -26,25 +26,21 @@ function Register() {
     },
     validationSchema: Yup.object({
       username: Yup.string()
-        .required("Username is required")
+        .required("Quan trọng!")
         .min(3, "Minimum length is 3")
         .max(20, "Maximum length is 20"),
-      email: Yup.string().email("Invalid email format").required("Required!"),
-      nameCompany: Yup.string().required("Name Company is required"),
-      address: Yup.string().required("Address is required"),
-      phoneNumber: Yup.number("Enter isn't number").required(
-        "Phone Number is required"
-      ),
-      bankId: Yup.number().required("Bank is required"),
-      bankNumber: Yup.number("Enter isn't number").required(
-        "Bank Number is required"
-      ),
+      email: Yup.string().email("Invalid email format").required("Quan trọng!"),
+      nameCompany: Yup.string().required("Quan trọng!"),
+      address: Yup.string().required("Quan trọng!"),
+      phoneNumber: Yup.number("Enter isn't number").required("Quan trọng!"),
+      bankId: Yup.number().required("Quan trọng!"),
+      bankNumber: Yup.number("Enter isn't number").required("Quan trọng!"),
       password: Yup.string()
-        .required("Password is required")
+        .required("Quan trọng!")
         .min(8, "Minimum length is 8")
         .max(20, "Maximum length is 20"),
       owner: Yup.string()
-        .required("owner is required")
+        .required("Quan trọng!")
         .min(3, "Minimum length is 3")
         .max(20, "Maximum length is 20")
     }),
@@ -69,10 +65,10 @@ function Register() {
       <div className="register-password-wrapper">
         <div onClick={backToLogin} className="register-back-btn"></div>
         <div className="register-main">
-          <div className="register-reset-title">Register To Provider</div>
+          <div className="register-reset-title">Đăng kí thành nhà cung cấp</div>
           <form className="register-form-email" onSubmit={formik.handleSubmit}>
             <div className="register-form-group">
-              <div className="register-text-form-register">Username</div>
+              <div className="register-text-form-register">Tên tài khoản</div>
               <input
                 type="text"
                 className="register-email-register"
@@ -90,7 +86,7 @@ function Register() {
                 onChange={formik.handleChange}
               />
               {errors.email && <p className="errors">{errors.email}</p>}
-              <div className="register-text-form-register">Name Company</div>
+              <div className="register-text-form-register">Tên công ty</div>
               <input
                 type="text"
                 className="register-email-register"
@@ -101,7 +97,7 @@ function Register() {
               {errors.nameCompany && (
                 <p className="errors">{errors.nameCompany}</p>
               )}
-              <div className="register-text-form-register">Address</div>
+              <div className="register-text-form-register">Địa chỉ</div>
               <input
                 type="text"
                 className="register-email-register"
@@ -110,7 +106,7 @@ function Register() {
                 onChange={formik.handleChange}
               />
               {errors.address && <p className="errors">{errors.address}</p>}
-              <div className="register-text-form-register">Phone Number </div>
+              <div className="register-text-form-register">Sô điện thoại</div>
               <input
                 type="text"
                 className="register-email-register"
@@ -126,7 +122,7 @@ function Register() {
                 name="bankNumber"
                 value={values.bank}
               >
-                Bank
+                Ngận hàng
               </div>
               <select
                 name="bankId"
@@ -141,7 +137,7 @@ function Register() {
                 ))}
               </select>
               {errors.bankId && <p className="errors">{errors.bankId}</p>}
-              <div className="register-text-form-register">Bank Number </div>
+              <div className="register-text-form-register">Số tài khoản</div>
               <input
                 type="text"
                 className="register-email-register"
@@ -152,7 +148,7 @@ function Register() {
               {errors.bankNumber && (
                 <p className="errors">{errors.bankNumber}</p>
               )}
-              <div className="register-text-form-register">Owner </div>
+              <div className="register-text-form-register">Chủ sở hữu </div>
               <input
                 type="text"
                 className="register-email-register"
@@ -161,6 +157,7 @@ function Register() {
                 onChange={formik.handleChange}
               />
               {errors.owner && <p className="errors">{errors.owner}</p>}
+              <div className="register-text-form-register">Mật khẩu</div>
               <input
                 type="password"
                 className="register-email-register"

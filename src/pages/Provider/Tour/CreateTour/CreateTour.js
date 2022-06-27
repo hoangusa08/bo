@@ -1,6 +1,7 @@
+// /* eslint-disable*/
 import MyCkeditor from "components/CkEditor/Editor";
-// import Loading from "components/Loading/Loading";
 import { pushToast } from "components/Toast";
+import { getUser } from "core/localStore";
 import http from "core/services/httpService";
 import useFetchCategories from "hook/useFetchCategories";
 import useFetchProvince from "hook/useFetchProvince";
@@ -9,15 +10,14 @@ import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import DatePicker from "react-multi-date-picker";
 import DatePanel from "react-multi-date-picker/plugins/date_panel";
-// import { useHistory } from "react-router-dom";
 import "./CreateTour.scss";
+import { storage } from "core/FireBase";
 
 const format = "DD-MM-YYYY";
 
 export default function CreateTour() {
   const [cates] = useFetchCategories();
   const [provinces] = useFetchProvince();
-  // const history = useHistory();
   const [dataSubmit, setDataSubmit] = useState({
     name: "",
     adultPrice: "",
@@ -26,99 +26,115 @@ export default function CreateTour() {
     categoryTd: 1,
     providerId: 1,
     provinceId: 1,
-    numberDate: 0,
+    numberDate: 1,
     subDescription: "",
     tourImage: ["", "", "", ""],
     schedules: []
   });
-
+  const provider = getUser();
+  const [images, setImages] = useState([]);
   const [dates, setDates] = useState([]);
-  // const [isLoading, setIsLoading] = React.useState(false);
-
-  const handleImages = (e, index) => {
-    const temp = [...dataSubmit.tourImage];
-    temp[index] = e.target.value;
-    setDataSubmit({ ...dataSubmit, tourImage: temp });
-  };
 
   const handleSubmit = () => {
     if (dataSubmit.name === "") {
       return;
     }
-    console.log({
-      ...dataSubmit,
-      schedules: dates.map((date) => date.format())
-    });
-    // setIsLoading(true);
     http
       .post("/provider/createTour", {
         ...dataSubmit,
-        schedules: dates.map((date) => date.format())
+        schedules: dates.map((date) => date.format()),
+        providerId: provider?.id,
+        tourImage: images
       })
       .then((response) => {
         pushToast("success", response.message);
-        console.log(response);
-        // setIsLoading(false);
         // history.push("/manage-tour");
       })
       .catch((error) => {
         pushToast("error", error.message);
-        // setIsLoading(false);
       });
   };
 
   const handleEditor = (value) => {
     setDataSubmit({ ...dataSubmit, description: value });
   };
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
 
-  React.useEffect(() => {
-    console.log(dataSubmit);
-  }, [dataSubmit]);
+  const handleChange = (e) => {
+    let temp = [];
+    setImages([]);
+    if (e.target.files.length < 4) {
+      pushToast("error", "Chọn ít nhất 4 ảnh");
+      return;
+    }
+    const promises = [];
+    for (let i = 0; i < 4; i++) {
+      temp.push(e.target.files[i]);
+    }
+    temp.map((img) => {
+      const uploadTask = storage.ref(`images/${img.name}`).put(img);
+      promises.push(uploadTask);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          console.log(snapshot);
+        },
+        (error) => {
+          console.log(error);
+        },
+        async () => {
+          await storage
+            .ref("images")
+            .child(img.name)
+            .getDownloadURL()
+            .then((urls) => {
+              setImages((prevState) => [...prevState, urls]);
+            });
+        }
+      );
+    });
+  };
 
   return (
     <MainLayout>
       <div className="create-tour">
         <div className="create-tour-top">
-          <h3>Create Tour</h3>
+          <h3>Tạo Tour</h3>
           <button
             className="btn btn-primary save"
             onClick={() => handleSubmit()}
           >
-            Save
+            Lưu
           </button>
         </div>
         <div className="create-tour-body">
           <Row>
             <Col>
               <div className="create-tour-body-item">
-                <h6 style={{ marginLeft: "5px" }}>Name</h6>
+                <h6 style={{ marginLeft: "5px" }}>Tên tour</h6>
                 <input
-                  placeholder={"Enter name tour"}
+                  placeholder="Tên tour"
                   value={dataSubmit.name}
                   onChange={(e) =>
                     setDataSubmit({ ...dataSubmit, name: e.target.value })
                   }
                 ></input>
                 <span style={{ color: "red" }}>
-                  {dataSubmit.name === "" && "name is requied"}
+                  {dataSubmit.name === "" && "Quang trọng!"}
                 </span>
               </div>
             </Col>
             <Col>
               <div className="create-tour-body-item">
-                <h6 style={{ marginLeft: "5px" }}>Adult Price</h6>
+                <h6 style={{ marginLeft: "5px" }}>Giá cho người lớn</h6>
                 <input
-                  placeholder={"Enter Adult Price"}
+                  placeholder="Giá cho người lớn"
                   value={dataSubmit.adultPrice}
                   onChange={(e) =>
                     setDataSubmit({ ...dataSubmit, adultPrice: e.target.value })
                   }
                 ></input>
                 <span style={{ color: "red" }}>
-                  {dataSubmit.adultPrice === "" && "Adult Price is requied"}
+                  {dataSubmit.adultPrice === "" && "Quang trọng!"}
                 </span>
               </div>
             </Col>
@@ -126,28 +142,26 @@ export default function CreateTour() {
           <Row>
             <Col>
               <div className="create-tour-body-item">
-                <h6 style={{ marginLeft: "5px" }}>Children Price</h6>
+                <h6 style={{ marginLeft: "5px" }}>Giá Cho trẻ em</h6>
                 <input
-                  placeholder={"Enter Children Price"}
+                  placeholder="Giá Cho trẻ em"
                   value={dataSubmit.childPrice}
                   onChange={(e) =>
                     setDataSubmit({ ...dataSubmit, childPrice: e.target.value })
                   }
                 ></input>
                 <span style={{ color: "red" }}>
-                  {dataSubmit.childPrice === "" && "Child Price is requied"}
+                  {dataSubmit.childPrice === "" && "Quang trọng!"}
                 </span>
               </div>
             </Col>
             <Col>
               <div className="create-tour-body-item">
-                <h6 style={{ marginLeft: "5px" }}>Schedules</h6>
-
+                <h6 style={{ marginLeft: "5px" }}>Thời gan bắt đầu</h6>
                 <DatePicker
                   value={dates}
                   style={{
-                    width: "100%",
-                    minWidth: "750px"
+                    borderRadius: "0px"
                   }}
                   onChange={setDates}
                   multiple
@@ -156,7 +170,11 @@ export default function CreateTour() {
                   format={format}
                   calendarPosition="bottom-center"
                   plugins={[<DatePanel key={"1"} />]}
+                  placeholder="Thời gian"
                 />
+                <span style={{ color: "red" }}>
+                  {dates.length === 0 && "Quang trọng!"}
+                </span>
               </div>
             </Col>
           </Row>
@@ -165,70 +183,33 @@ export default function CreateTour() {
             <Col>
               <div className="create-tour-body-item">
                 <h6 style={{ marginLeft: "5px" }} className="abc">
-                  Tour Image 1
+                  Ảnh tour
                 </h6>
                 <input
-                  placeholder={"Enter tour image"}
-                  value={dataSubmit.tourImage[1]}
-                  onChange={(e) => handleImages(e, 1)}
+                  type="file"
+                  multiple
+                  className="form-control"
+                  onChange={handleChange}
                 ></input>
                 <span style={{ color: "red" }}>
-                  {dataSubmit.tourImage[1] === "" && "tour image is requied"}
-                </span>
-              </div>
-            </Col>
-            <Col>
-              <div className="create-tour-body-item">
-                <h6 style={{ marginLeft: "5px" }} className="abc">
-                  Tour Image
-                </h6>
-                <input
-                  placeholder={"Enter tour image"}
-                  value={dataSubmit.tourImage[2]}
-                  onChange={(e) => handleImages(e, 2)}
-                ></input>
-                <span style={{ color: "red" }}>
-                  {dataSubmit.tourImage[2] === "" && "tour image is requied"}
+                  {images.length === 0 && "Quang trọng!"}
                 </span>
               </div>
             </Col>
           </Row>
           <Row>
-            <Col>
-              <div className="create-tour-body-item">
-                <h6 style={{ marginLeft: "5px" }} className="abc">
-                  Tour Image
-                </h6>
-                <input
-                  placeholder={"Enter tour image"}
-                  value={dataSubmit.tourImage[3]}
-                  onChange={(e) => handleImages(e, 3)}
-                ></input>
-                <span style={{ color: "red" }}>
-                  {dataSubmit.tourImage[3] === "" && "tour image is requied"}
-                </span>
-              </div>
-            </Col>
-            <Col>
-              <div className="create-tour-body-item">
-                <h6 style={{ marginLeft: "5px" }}>Tour Image 1</h6>
-                <input
-                  placeholder={"Enter tour image"}
-                  value={dataSubmit.tourImage[0]}
-                  onChange={(e) => handleImages(e, 0)}
-                ></input>
-                <span style={{ color: "red" }}>
-                  {dataSubmit.tourImage[0] === "" && "tour image is requied"}
-                </span>
-              </div>
-            </Col>
+            {images?.map((img, index) => (
+              <Col key={index}>
+                <img className="image" src={img} />
+              </Col>
+            ))}
           </Row>
           <Row>
             <Col>
               <div className="create-tour-body">
                 <div className="select-ctn">
                   <span style={{ marginLeft: "5px", marginBottom: "3px" }}>
-                    Category
+                    Thể loại
                   </span>
                   <select
                     value={dataSubmit.categoryTd}
@@ -253,7 +234,7 @@ export default function CreateTour() {
               <div className="create-tour-body">
                 <div className="select-ctn">
                   <span style={{ marginLeft: "5px", marginBottom: "3px" }}>
-                    Location Start
+                    Địa điểm khỏi hành
                   </span>
                   <select
                     value={dataSubmit.provinceId}
@@ -279,10 +260,10 @@ export default function CreateTour() {
             <Col>
               <div className="create-tour-body-item">
                 <h6 style={{ marginLeft: "5px" }} className="abc">
-                  Sub Description
+                  Mô tả
                 </h6>
                 <input
-                  placeholder={"Enter tour  Sub Description"}
+                  placeholder="Mô tả"
                   value={dataSubmit.subDescription}
                   onChange={(e) =>
                     setDataSubmit({
@@ -292,14 +273,13 @@ export default function CreateTour() {
                   }
                 ></input>
                 <span style={{ color: "red" }}>
-                  {dataSubmit.subDescription === "" &&
-                    " Sub Description is requied"}
+                  {dataSubmit.subDescription === "" && "Quang trọng!"}
                 </span>
               </div>
             </Col>
             <Col>
               <div className="create-tour-body-item">
-                <h6 style={{ marginLeft: "5px" }}>Number Date</h6>
+                <h6 style={{ marginLeft: "5px" }}>Số ngày</h6>
                 <input
                   placeholder={"Enter tour Number Date"}
                   value={dataSubmit.numberDate}

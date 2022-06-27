@@ -8,10 +8,13 @@ import MainLayout from "layout/MainLayout/MainLayout";
 import { React, useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import "./ToursAccept.scss";
+import Delete from "assets/images/delete.png";
+import Cmt from "assets/images/cmt.jpg";
+import { useHistory } from "react-router-dom";
 
 function ToursAccept() {
   const [search, setSearch] = useState("");
-
+  const history = useHistory();
   const [data, getTour] = useFetchTourAdmin();
 
   const handleSearch = (isNext, isSearch) => {
@@ -54,10 +57,17 @@ function ToursAccept() {
         <td>{tour?.subDescription}</td>
         <td>
           <button
-            className="btn btn-danger"
-            onClick={() => handleStatus("Refuse", tour.id)}
+            className="btn-delete"
+            onClick={() => handleStatus("refuse", tour.id)}
           >
-            Reject
+            <img className="delete" src={Delete} />
+          </button>
+          <button
+            className="btn-cmt"
+            disabled={tour?.isDelete === "true"}
+            onClick={() => history.push(`/view/view-rate/${tour.id}-admin`)}
+          >
+            <img className="detail" src={Cmt} />
           </button>
         </td>
       </tr>
@@ -68,7 +78,7 @@ function ToursAccept() {
     <MainLayout>
       <div className="overview-category">
         <div className="header-ctn">
-          <h2>Tours Acceept</h2>
+          <h2>Tours được chấp nhận</h2>
           <Search
             setSearch={setSearch}
             search={search}
@@ -80,12 +90,12 @@ function ToursAccept() {
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Category</th>
-                <th>Provider</th>
-                <th>Descripttion</th>
-                <th style={{ width: "150px" }}>Action</th>
+                <th>Tên</th>
+                <th>Hình ảnh</th>
+                <th>Thể loại</th>
+                <th>Nhà cũng cấp</th>
+                <th>Mô tả</th>
+                <th style={{ width: "140px" }}>Hành động</th>
               </tr>
             </thead>
             <tbody>{tableTour}</tbody>

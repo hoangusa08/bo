@@ -41,6 +41,13 @@ function TourBookedAccept() {
         <td>{book.schedule}</td>
         <td>
           <button
+            className="btn btn-success"
+            onClick={() => handleStatus(book.id, PAYMENT_STATUS.COMPLETE)}
+          >
+            Complete
+          </button>
+          &nbsp;&nbsp;&nbsp;
+          <button
             className="btn btn-danger"
             onClick={() => handleStatus(book.id, PAYMENT_STATUS.CANCEL)}
           >
@@ -59,13 +66,13 @@ function TourBookedAccept() {
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>Customer</th>
-                <th>Tour</th>
-                <th>Adult Number</th>
-                <th>Children Number</th>
-                <th>Total</th>
-                <th>Schedule</th>
-                <th style={{ width: "150px" }}>Action</th>
+                <th>Tên khách hàng</th>
+                <th>Tên tour</th>
+                <th>Người lớn</th>
+                <th>Trẻ em</th>
+                <th>Tổng tiền</th>
+                <th>Thời gian</th>
+                <th style={{ width: "250px" }}>Action</th>
               </tr>
             </thead>
             <tbody>{tableRequest}</tbody>

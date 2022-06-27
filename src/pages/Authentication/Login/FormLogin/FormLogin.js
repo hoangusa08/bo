@@ -54,13 +54,13 @@ function FormLogin() {
           )}
         </div>
         <div className="login-form-group ">
-          <label>Password</label>
+          <label>Mật khẩu</label>
           <input
             className="input-password form-control"
             type={isShowPassword ? "text" : "password"}
             name="password"
             id="password"
-            placeholder="Enter your password"
+            placeholder="Mật khẩu"
             value={values.password}
             onChange={formik.handleChange}
           />
@@ -80,7 +80,7 @@ function FormLogin() {
         </div>
         <div className="login-form-submit">
           <button className="login-form-submit-btn" type="submit">
-            Login
+            Đăng nhập
           </button>
         </div>
       </form>

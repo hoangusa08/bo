@@ -31,18 +31,18 @@ function TourBookedDelete() {
   return (
     <MainLayout>
       <div className="overview-category">
-        <h2>Tour Booked Accept</h2>
+        <h2>Đơn từ chối</h2>
         <div className="main">
           <Table bordered>
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>Customer</th>
-                <th>Tour</th>
-                <th>Adult Number</th>
-                <th>Children Number</th>
-                <th>Total</th>
-                <th>Schedule</th>
+                <th>Tên khách hàng</th>
+                <th>Tên tour</th>
+                <th>Người lớn</th>
+                <th>Trẻ em</th>
+                <th>Tổng tiền</th>
+                <th>Thời gian</th>
               </tr>
             </thead>
             <tbody>{tableRequest}</tbody>

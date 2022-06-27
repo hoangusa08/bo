@@ -1,0 +1,14 @@
+.dashboard{
+    padding: 50px;
+    .board{
+        border: 1px solid #3acce3;
+        background-color: #3acce3;
+        height: 100px;
+        color: white;
+        align-items: center;
+        div{
+            align-items: center;
+            text-align: center;
+        }
+    }
+}

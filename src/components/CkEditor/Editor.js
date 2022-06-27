@@ -6,10 +6,10 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 const MyCkeditor = (props) => {
   return (
     <div>
-      <h6>Description</h6>
+      <h6>Lịch trình</h6>
       <CKEditor
         editor={Editor}
-        data="<p>Descripttion</p>"
+        data={props?.data || "<p>Lịch trình</p>"}
         onReady={(editor) => {
           // You can store the "editor" and use when it is needed.
           console.log("Editor is ready to use!", editor);

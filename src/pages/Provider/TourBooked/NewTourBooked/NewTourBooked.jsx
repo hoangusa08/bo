@@ -7,6 +7,8 @@ import MainLayout from "layout/MainLayout/MainLayout";
 import { React, useEffect } from "react";
 import { Table } from "reactstrap";
 import "./NewTourBooked.scss";
+import Accept from "assets/images/accept.png";
+import Reject from "assets/images/reject.png";
 
 function NewTourBooked() {
   const [data, getBooked] = useGetTourByStatus();
@@ -41,17 +43,17 @@ function NewTourBooked() {
         <td>{book.schedule}</td>
         <td>
           <button
-            className="btn btn-success"
+            className="btn-accept"
             onClick={() => handleStatus(book.id, PAYMENT_STATUS.APPROVE)}
           >
-            Approve
+            <img src={Accept} />
           </button>
           &nbsp;&nbsp;&nbsp;
           <button
-            className="btn btn-danger"
+            className="btn-reject"
             onClick={() => handleStatus(book.id, PAYMENT_STATUS.CANCEL)}
           >
-            Cancel
+            <img className="reject" src={Reject} />
           </button>
         </td>
       </tr>
@@ -61,19 +63,19 @@ function NewTourBooked() {
   return (
     <MainLayout>
       <div className="overview-category">
-        <h2>New Tour Booked</h2>
+        <h2>Tour mới được đặt</h2>
         <div className="main">
           <Table bordered>
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>Customer</th>
-                <th>Tour</th>
-                <th>Adult Number</th>
-                <th>Children Number</th>
-                <th>Total</th>
-                <th>Schedule</th>
-                <th style={{ width: "220px" }}>Action</th>
+                <th>Tên khách hàng</th>
+                <th>Tên tour</th>
+                <th>Người lớn</th>
+                <th>Trẻ em</th>
+                <th>Tổng tiền</th>
+                <th>Thời gian</th>
+                <th style={{ width: "150px" }}>Hành động</th>
               </tr>
             </thead>
             <tbody>{tableRequest}</tbody>

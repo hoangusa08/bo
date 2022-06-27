@@ -12,6 +12,27 @@
 
   .main {
     margin-top: 20px;
+    .btn-accept{
+      width: 40px;
+      border-radius: 50%;
+      border: none;
+      img{
+        border-radius: 50%;
+      }
+    }
+    .btn-reject{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      z-index: 1000;
+      .reject{
+        width: 100%;
+        max-width: unset;
+        border-radius: 50%;
+
+      }
+    }
   }
   button{
     margin-left: 5px;
