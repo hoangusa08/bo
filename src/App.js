@@ -8,8 +8,14 @@ import Toast from "components/Toast";
 import { routeConfig, RouteWithSubRoutes } from "router/config";
 
 import Error from "pages/Error/Error";
-// import Tour from "pages/Home/Tour/Tours/Tour";
 import Login from "pages/Authentication/Login/Login";
+
+import { positions, Provider } from "react-alert";
+import AlertMUITemplate from "react-alert-template-mui";
+
+const options = {
+  position: positions.MIDDLE
+};
 
 function App() {
   const { i18n } = useTranslation();
@@ -44,18 +50,20 @@ function App() {
     // getUserMe();
   }, []);
   return (
-    <div className="content-wrapper">
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/not-found" component={Error} />
-          <Route exact path="/" component={Login} />
-          {routeConfig.map((route, i) => (
-            <RouteWithSubRoutes key={i} {...route} />
-          ))}
-        </Switch>
-      </BrowserRouter>
-      <Toast />
-    </div>
+    <Provider template={AlertMUITemplate} {...options}>
+      <div className="content-wrapper">
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/not-found" component={Error} />
+            <Route exact path="/" component={Login} />
+            {routeConfig.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route} />
+            ))}
+          </Switch>
+        </BrowserRouter>
+        <Toast />
+      </div>
+    </Provider>
   );
 }
 

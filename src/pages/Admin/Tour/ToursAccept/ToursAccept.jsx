@@ -11,10 +11,12 @@ import "./ToursAccept.scss";
 import Delete from "assets/images/delete.png";
 import Cmt from "assets/images/cmt.jpg";
 import { useHistory } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 function ToursAccept() {
   const [search, setSearch] = useState("");
   const history = useHistory();
+  const alert = useAlert();
   const [data, getTour] = useFetchTourAdmin();
 
   const handleSearch = (isNext, isSearch) => {
@@ -58,7 +60,18 @@ function ToursAccept() {
         <td>
           <button
             className="btn-delete"
-            onClick={() => handleStatus("refuse", tour.id)}
+            onClick={() => {
+              alert.show(`Bạn có muốn xóa tour ${tour?.name.toUpperCase()}!`, {
+                title: "Xóa tour",
+                actions: [
+                  {
+                    copy: "Xóa",
+                    onClick: () => handleStatus("refuse", tour.id)
+                  }
+                ],
+                closeCopy: "Đóng"
+              });
+            }}
           >
             <img className="delete" src={Delete} />
           </button>

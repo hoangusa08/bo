@@ -10,10 +10,11 @@ import { React, useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import "./ProviderAccept.scss";
 import Delete from "assets/images/delete.png";
+import { useAlert } from "react-alert";
 
 function ProviderAccept() {
   const [search, setSearch] = useState("");
-
+  const alert = useAlert();
   const [data, getProvider] = useFetchProviderByStatus();
 
   const handleSearch = (isNext, isSearch) => {
@@ -57,7 +58,22 @@ function ProviderAccept() {
         <td style={{ width: "100px" }}>
           <button
             className="btn-delete"
-            onClick={() => handleStatus(SatusConstant.REFUSE, provider.id)}
+            onClick={() => {
+              alert.show(
+                `Bạn có muốn xóa nhà cung cấp ${provider?.nameConpany.toUpperCase()}!`,
+                {
+                  title: "Xóa nhà cung cấp",
+                  actions: [
+                    {
+                      copy: "Xóa",
+                      onClick: () =>
+                        handleStatus(SatusConstant.REFUSE, provider.id)
+                    }
+                  ],
+                  closeCopy: "Đóng"
+                }
+              );
+            }}
           >
             <img className="delete" src={Delete} />
           </button>

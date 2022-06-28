@@ -9,12 +9,14 @@ import Delete from "assets/images/delete.png";
 import { useHistory } from "react-router-dom";
 import http from "core/services/httpService";
 import { pushToast } from "components/Toast";
+import { getUser } from "core/localStore";
 
 export default function ViewRateTour() {
   const [tour, getTour] = useFetchTOurDetail();
   const id = window.location.href.split("/");
   const check = id[id.length - 1].split("-");
   const history = useHistory();
+  const user = getUser();
 
   useEffect(() => {
     if (check.length === 1) {
@@ -46,7 +48,10 @@ export default function ViewRateTour() {
           <div style={{ display: "flex" }}>
             <button
               className="back"
-              onClick={() => history.push("/tour-accept")}
+              onClick={() => {
+                if (user.role === "ROLE_PROVIDER") history.push("/tour-accept");
+                else history.push("/admin/tours-accept");
+              }}
             >
               <img src={Back} />
             </button>

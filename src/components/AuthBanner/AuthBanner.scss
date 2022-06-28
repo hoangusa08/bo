@@ -1,7 +1,7 @@
 @import "../../assets/scss/app.scss";
 
 .auth-banner {
-  background-image: url("../../assets/images/authbanner.png");
+  background: linear-gradient(269.37deg, #02548a 0%, #2d7ad8 100%);
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
@@ -14,7 +14,7 @@
   }
 
   .slogan {
-    color: $color_white;
+    
     position: absolute;
     width: 500px;
     height: 338px;
@@ -37,8 +37,11 @@
     @include tablet-desktop {
       font-size: 15px;
     }
+    p{
+      margin: unset;
+      color: $color_white !important;
+    }
   }
-
   .labelWrapper {
     position: absolute;
     width: 300px;

@@ -27,6 +27,8 @@
     "node-sass": "^6.0.1",
     "query-string": "^7.0.1",
     "react": "^17.0.2",
+    "react-alert": "^7.0.3",
+    "react-alert-template-mui": "^1.0.7",
     "react-bootstrap": "^1.6.1",
     "react-chartjs-2": "^4.2.0",
     "react-datepicker": "^4.2.0",
