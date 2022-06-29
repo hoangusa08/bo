@@ -11,7 +11,7 @@ export default function Header() {
     <div className="header">
       <div className="account" onClick={() => history.push("/account")}>
         <img src={avatar} />
-        <span>{user?.nameConpany ? user?.nameConpany : "Admin"}</span>
+        <span>{user?.nameCompany ? user?.nameCompany : "Admin"}</span>
       </div>
     </div>
   );

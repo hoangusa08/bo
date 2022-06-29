@@ -1,3 +1,14 @@
 .chart-user{
     max-height: 100px;
+    margin-top: 20px;
+    text-align: center;
+    .select{
+      width: 100px;
+      border: 1px solid  #3acce3;
+      background-color: unset;
+      height: 30px;
+      color: #3acce3;
+      font-size: 18px;
+      border-radius: 3px;
+    }
 }

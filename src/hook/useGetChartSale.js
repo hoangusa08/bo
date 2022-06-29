@@ -6,13 +6,15 @@ export default function useGetChartSale() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [data, setData] = React.useState(null);
 
-  const getChartSale = async () => {
+  const getChartSale = async (year) => {
     try {
       setIsLoading(true);
-      await http.get(`/admin/dasboard/chart-payment`).then((response) => {
-        setData(response.data);
-        setIsLoading(false);
-      });
+      await http
+        .get(`/admin/dashboard/chart-payment/${year}`)
+        .then((response) => {
+          setData(response.data);
+          setIsLoading(false);
+        });
     } catch (error) {
       pushToast("error", error.message);
       setIsLoading(false);

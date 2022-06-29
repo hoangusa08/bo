@@ -2,14 +2,14 @@ import { pushToast } from "components/Toast";
 import http from "core/services/httpService";
 import React from "react";
 
-export default function useGetChartUser() {
+export default function useGetTotalPro() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [data, setData] = React.useState(null);
 
-  const getChartUser = async (year) => {
+  const getTotal = async (id) => {
     try {
       setIsLoading(true);
-      await http.get(`/admin/dashboard/chart-user/${year}`).then((response) => {
+      await http.get(`/provider/dashboard/${id}`).then((response) => {
         setData(response.data);
         setIsLoading(false);
       });
@@ -19,5 +19,5 @@ export default function useGetChartUser() {
     }
   };
 
-  return [data, getChartUser, isLoading];
+  return [data, getTotal, isLoading];
 }

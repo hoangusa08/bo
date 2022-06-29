@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import Login from "pages/Authentication/Login/Login";
 import Error from "pages/Error/Error.js";
-import Register from "pages/Authentication/FogotPassword/Register";
+import Register from "pages/Authentication/Register/Register";
 import TourAwait from "pages/Provider/Tour/TourAwait/TourAwait";
 import TourDelete from "pages/Provider/Tour/TourDelete/TourDelete";
 
@@ -27,6 +27,7 @@ import ViewRateTour from "pages/Provider/Tour/ViewRateTour/ViewRateTour";
 import Dashboard from "pages/Admin/Dashboard/Dashboard";
 import Categories from "pages/Admin/Categories/Categories";
 import Customer from "pages/Admin/Customer/Customer";
+import DashboardPro from "pages/Provider/Dashboard/DashboardPro";
 
 export const routeConfig = [
   {
@@ -71,12 +72,17 @@ export const routeConfig = [
     exact: true,
     component: TourDelete
   },
-
   {
     path: "/manage-tour-create",
     isPrivate: true,
     exact: true,
     component: CreateTour
+  },
+  {
+    path: "/dashboard",
+    isPrivate: true,
+    exact: true,
+    component: DashboardPro
   },
   {
     path: "/tour-accept",

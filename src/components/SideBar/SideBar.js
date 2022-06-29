@@ -9,6 +9,11 @@ import "./SideBar.scss";
 
 const menu_provider = [
   {
+    label: "Trang chủ",
+    path: "/dashboard",
+    icon: ""
+  },
+  {
     label: "Tạo Tour",
     path: "/create-tour",
     icon: ""
@@ -46,11 +51,6 @@ const menu_provider = [
   {
     label: "Tours đặt đã từ chối",
     path: "/tour-booked-delete",
-    icon: ""
-  },
-  {
-    label: "Tours Booked Delete",
-    path: "/manage-categories",
     icon: ""
   }
 ];
@@ -163,7 +163,7 @@ const SideBar = () => {
         <div className="sidebar-footer">
           <div className="d-flex align-items-center justify-content-between">
             <span className="mr-2 user-name">
-              {user?.nameConpany ? user?.nameConpany?.toUpperCase() : "Admin"}
+              {user?.nameCompany ? user?.nameCompany?.toUpperCase() : "Admin"}
             </span>
             <i className="fas fa-sign-out-alt" onClick={() => onLogOut()}></i>
           </div>

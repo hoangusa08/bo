@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
-import "./ChartUser.scss";
-import useGetChartUser from "hook/useGetChartUser";
+import useGetChartSalePro from "hook/useGetChartSalePro";
+import { getUser } from "core/localStore";
 Chart.register(...registerables);
 
 const options = {
   responsive: true,
   plugins: {
+    legend: {
+      position: "top"
+    },
     title: {
       display: true,
-      text: "Biểu đồ khách hàng"
+      text: "Biểu đồ doanh thu"
     }
   }
 };
@@ -23,22 +26,20 @@ const labels = [
   "Tháng 5",
   "Tháng 6",
   "Tháng 7",
+  "Tháng 8",
   "Tháng 9",
   "Tháng 10",
   "Tháng 11",
   "Tháng 12"
 ];
-export default function ChartUser() {
-  const [users, getChartUser] = useGetChartUser();
+const user = getUser();
+
+export default function ChartSales() {
+  const [sales, getChartSale] = useGetChartSalePro();
   const [thisYear, setThisYear] = useState(new Date().getFullYear());
   const [years, setYears] = useState([]);
-  const [data, setData] = useState({
-    customers: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
-    providers: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
-  });
-
   useEffect(() => {
-    getChartUser(thisYear);
+    getChartSale(user?.id, thisYear);
   }, [thisYear]);
 
   useEffect(() => {
@@ -48,13 +49,8 @@ export default function ChartUser() {
     }
     setYears(temp);
   }, []);
-
-  useEffect(() => {
-    if (users) setData({ ...users });
-  }, [users]);
-
   return (
-    <div className="chart-user">
+    <div className="chart-sales">
       <select
         value={thisYear}
         className="select"
@@ -66,20 +62,18 @@ export default function ChartUser() {
           </option>
         ))}
       </select>
-      <Bar
+      <Line
         options={options}
         data={{
           labels,
           datasets: [
             {
-              label: " Khách hàng",
-              data: data?.customers,
+              label: "Doanh thu",
+              data: sales || [
+                10, 50, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120
+              ],
+              borderColor: "rgb(255, 99, 132)",
               backgroundColor: "rgba(255, 99, 132, 0.5)"
-            },
-            {
-              label: " Nhà cung cấp",
-              data: data?.providers,
-              backgroundColor: "rgba(53, 162, 235, 0.5)"
             }
           ]
         }}

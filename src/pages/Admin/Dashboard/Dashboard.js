@@ -18,25 +18,25 @@ export default function Dashboard() {
       <div className="dashboard">
         <Row>
           <Col>
-            <div className="board">
+            <div className="board b1">
               <div>Tổng số khách hàng</div>
               <div>{total?.totalCustomer} người</div>
             </div>
           </Col>
           <Col>
-            <div className="board">
+            <div className="board b2">
               <div>Tổng số nhà cung cấp</div>
               <div>{total?.totalProvider} người</div>
             </div>
           </Col>
           <Col>
-            <div className="board">
+            <div className="board b3">
               <div>Tổng số tour</div>
               <div>{total?.totalTour} tour</div>
             </div>
           </Col>
           <Col>
-            <div className="board">
+            <div className="board b4">
               <div>Tổng doanh thu</div>
               <div>{total?.totalSale} VND</div>
             </div>

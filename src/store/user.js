@@ -36,7 +36,7 @@ const slice = createSlice({
       if (payload?.user?.role === USER_ROLE.ADMIN) {
         window.location.href = "/admin/dashboard";
       } else {
-        window.location.href = "/create-tour";
+        window.location.href = "/dashboard";
       }
     },
     logoutSuccess: (state) => {

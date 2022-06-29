@@ -1,15 +1,27 @@
 .dashboard{
     padding: 50px;
     .board{
-        border: 1px solid #3acce3;
-        background-color: #3acce3;
         height: 100px;
         color: white;
         align-items: center;
         padding-top: 20px;
+        border-radius: 3px;
+        font-size: 18px;
         div{
             align-items: center;
             text-align: center;
         }
+    }
+    .b1{
+        background: linear-gradient(#feb692, #ea5455);
+    }
+    .b2{
+        background: linear-gradient(#90f7ec, #32ccbc);
+    }
+    .b3{
+        background: linear-gradient(#81fbb8, #28c76f);
+    }
+    .b4{
+        background: linear-gradient(#e2b0ff, #9f44d3);
     }
 }

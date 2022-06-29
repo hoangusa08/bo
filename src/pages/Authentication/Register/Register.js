@@ -122,7 +122,7 @@ function Register() {
                 name="bankNumber"
                 value={values.bank}
               >
-                Ngận hàng
+                Ngân hàng
               </div>
               <select
                 name="bankId"
@@ -168,7 +168,7 @@ function Register() {
               {errors.password && <p className="errors">{errors.password}</p>}
             </div>
             <button type="submit" className="register-btn-submit">
-              Submit
+              Đăng kí
             </button>
           </form>
         </div>
