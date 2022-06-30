@@ -1,0 +1,39 @@
+
+.overview-cate-admin {
+  position: relative;
+  padding: 60px 40px;
+
+  .header-ctn{
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn-add {
+    position: absolute;
+    top: 70px;
+    right: 70px;
+  }
+
+  .main {
+    margin-top: 20px;
+    .image-tour{
+      height: 50px;
+      &:hover{
+        transform: scale(5);
+        transition: all .2s ease-in-out;
+      }
+    }
+    .btn-accept{
+      width: 40px;
+      border-radius: 50%;
+      border: none;
+      img{
+        border-radius: 50%;
+        width: 110%;
+        height: 110%;
+      }
+    }
+  }
+  button{
+    margin-left: 5px;
+  }
+}

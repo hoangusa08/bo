@@ -9,7 +9,12 @@ export default function Header() {
   const user = getUser();
   return (
     <div className="header">
-      <div className="account" onClick={() => history.push("/account")}>
+      <div
+        className="account"
+        onClick={() => {
+          if (user.role === "ROLE_PROVIDER") history.push("/account");
+        }}
+      >
         <img src={avatar} />
         <span>{user?.nameCompany ? user?.nameCompany : "Admin"}</span>
       </div>

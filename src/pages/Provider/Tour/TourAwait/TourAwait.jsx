@@ -12,11 +12,13 @@ import { pushToast } from "components/Toast";
 import { useHistory } from "react-router-dom";
 import Delete from "assets/images/delete.png";
 import Detail from "assets/images/detail1.png";
+import { useAlert } from "react-alert";
 
 function TourAwait() {
   const [data, getTour] = useFetchTourProvider();
   const [search, setSearch] = useState("");
   const history = useHistory();
+  const alert = useAlert();
   useEffect(() => {
     getTour(SatusConstant.WAITING, 0, search);
   }, []);
@@ -36,7 +38,18 @@ function TourAwait() {
           <button
             className="btn-delete"
             disabled={tour?.isDelete === "true"}
-            onClick={() => handlDeleteTour(tour.id)}
+            onClick={() => {
+              alert.show(`Bạn có muốn xóa tour ${tour?.name.toUpperCase()}!`, {
+                title: "Xóa tour",
+                actions: [
+                  {
+                    copy: "Xóa",
+                    onClick: () => handlDeleteTour(tour.id)
+                  }
+                ],
+                closeCopy: "Đóng"
+              });
+            }}
           >
             <img className="delete" src={Delete} />
           </button>

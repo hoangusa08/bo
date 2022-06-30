@@ -12,11 +12,13 @@ import Pagination from "components/Pagination/Pagination";
 import Delete from "assets/images/delete.png";
 import Detail from "assets/images/detail1.png";
 import Cmt from "assets/images/cmt.jpg";
+import { useAlert } from "react-alert";
 
 function Tour() {
   const [data, getTour] = useFetchTourProvider();
   const [search, setSearch] = useState("");
   const history = useHistory();
+  const alert = useAlert();
   useEffect(() => {
     getTour(SatusConstant.ACCEPT, 0, search);
   }, []);
@@ -26,6 +28,9 @@ function Tour() {
       <tr key={index}>
         <th scope="row">{index + 1}</th>
         <td>{tour?.name}</td>
+        <td style={{ textAlign: "center" }}>
+          <img className="image-tour" src={tour?.tourImage} />
+        </td>
         <td>{tour?.category}</td>
         <td>{tour?.subDescription}</td>
         <td>{tour?.province}</td>
@@ -33,7 +38,18 @@ function Tour() {
           <button
             className="btn-delete"
             disabled={tour?.isDelete === "true"}
-            onClick={() => handlDeleteTour(tour.id)}
+            onClick={() => {
+              alert.show(`Bạn có muốn xóa tour ${tour?.name.toUpperCase()}!`, {
+                title: "Xóa tour",
+                actions: [
+                  {
+                    copy: "Xóa",
+                    onClick: () => handlDeleteTour(tour.id)
+                  }
+                ],
+                closeCopy: "Đóng"
+              });
+            }}
           >
             <img className="delete" src={Delete} />
           </button>
@@ -97,6 +113,7 @@ function Tour() {
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
                 <th>Tên</th>
+                <th style={{ width: "200px" }}>Ảnh</th>
                 <th>Thể loại</th>
                 <th>Mô tả</th>
                 <th>Địa điểm bắt đầu</th>

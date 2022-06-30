@@ -21,13 +21,14 @@ import ProviderAccept from "pages/Admin/Provider/ProviderAccept/ProviderAccept";
 import NewTours from "pages/Admin/Tour/NewTours/NewTours";
 import ToursReject from "pages/Admin/Tour/ToursReject/ToursReject";
 import ToursAccept from "pages/Admin/Tour/ToursAccept/ToursAccept";
-import EditTour from "pages/Provider/Tour/EditTour/EditTour";
 import TourDetail from "pages/Provider/Tour/TourDetail/TourDetail";
 import ViewRateTour from "pages/Provider/Tour/ViewRateTour/ViewRateTour";
 import Dashboard from "pages/Admin/Dashboard/Dashboard";
 import Categories from "pages/Admin/Categories/Categories";
 import Customer from "pages/Admin/Customer/Customer";
 import DashboardPro from "pages/Provider/Dashboard/DashboardPro";
+import CustomerDetail from "pages/Admin/Customer/CustomerDetail/CustomerDetail";
+import ProviderDetail from "pages/Admin/Provider/ProviderDetail/ProviderDetail";
 
 export const routeConfig = [
   {
@@ -97,12 +98,6 @@ export const routeConfig = [
     component: TourDetail
   },
   {
-    path: "/edit-tour/:id",
-    isPrivate: true,
-    exact: true,
-    component: EditTour
-  },
-  {
     path: "/new-tour-booked",
     isPrivate: true,
     exact: true,
@@ -145,6 +140,12 @@ export const routeConfig = [
     component: Customer
   },
   {
+    path: "/admin/customer/:id",
+    isPrivate: true,
+    exact: true,
+    component: CustomerDetail
+  },
+  {
     path: "/admin/dashboard",
     isPrivate: true,
     exact: true,
@@ -155,6 +156,12 @@ export const routeConfig = [
     isPrivate: true,
     exact: true,
     component: ProviderReject
+  },
+  {
+    path: "/admin/provider-detail/:id",
+    isPrivate: true,
+    exact: true,
+    component: ProviderDetail
   },
   {
     path: "/admin/provider-accept",

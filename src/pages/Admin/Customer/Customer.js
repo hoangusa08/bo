@@ -12,6 +12,7 @@ import http from "core/services/httpService";
 import "./Customer.scss";
 import Default from "assets/images/avatar-default.png";
 import { useAlert } from "react-alert";
+import { pushToast } from "components/Toast";
 
 export default function Customer() {
   const [data, getCustomers] = useGetCustomers();
@@ -29,7 +30,7 @@ export default function Customer() {
         getCustomers(data?.page, search);
       })
       .catch((error) => {
-        getCustomers("error", error.message);
+        pushToast("error", error.message);
       });
   };
 
@@ -105,7 +106,7 @@ export default function Customer() {
           </button>
           <button
             className="btn-detail"
-            onClick={() => history.push(`/detail-tour/${cus?.id}`)}
+            onClick={() => history.push(`/admin/customer/${cus?.id}`)}
           >
             <img className="detail" src={Detail} />
           </button>

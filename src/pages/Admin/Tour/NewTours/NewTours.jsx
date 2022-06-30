@@ -10,10 +10,11 @@ import { Table } from "reactstrap";
 import "./NewTours.scss";
 import Delete from "assets/images/delete.png";
 import Accept from "assets/images/accept.png";
+import { useAlert } from "react-alert";
 
 function NewTours() {
   const [search, setSearch] = useState("");
-
+  const alert = useAlert();
   const [data, getTour] = useFetchTourAdmin();
 
   const handleSearch = (isNext, isSearch) => {
@@ -57,14 +58,36 @@ function NewTours() {
         <td>
           <button
             className="btn-accept"
-            onClick={() => handleStatus("accept", tour.id)}
+            onClick={() => {
+              alert.show(`Bạn có muốn chấp nhận ${tour?.name.toUpperCase()}!`, {
+                title: "Chấp nhận tour",
+                actions: [
+                  {
+                    copy: "Chấp nhận",
+                    onClick: () => handleStatus("accept", tour.id)
+                  }
+                ],
+                closeCopy: "Đóng"
+              });
+            }}
           >
             <img className="delete" src={Accept} />
           </button>
           &nbsp;&nbsp;&nbsp;
           <button
             className="btn-delete"
-            onClick={() => handleStatus("refuse", tour.id)}
+            onClick={() => {
+              alert.show(`Bạn có muốn xóa ${tour?.name.toUpperCase()}!`, {
+                title: "Chấp nhận tour",
+                actions: [
+                  {
+                    copy: "Xóa",
+                    onClick: () => handleStatus("refuse", tour.id)
+                  }
+                ],
+                closeCopy: "Đóng"
+              });
+            }}
           >
             <img className="delete" src={Delete} />
           </button>

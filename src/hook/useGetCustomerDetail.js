@@ -2,15 +2,14 @@ import { pushToast } from "components/Toast";
 import http from "core/services/httpService";
 import React from "react";
 
-export default function useGetProviderDetail() {
+export default function useGetCustomerDetail() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [data, setData] = React.useState(null);
 
-  const getProviderDetail = async (id) => {
+  const getCustomerDetail = async (id) => {
     try {
       setIsLoading(true);
-      await http.get(`/provider/detail/${id}`).then((response) => {
-        console.log("---hoang---", response.data);
+      await http.get(`customer/${id}`).then((response) => {
         setData(response.data);
         setIsLoading(false);
       });
@@ -20,5 +19,5 @@ export default function useGetProviderDetail() {
     }
   };
 
-  return [data, getProviderDetail, isLoading];
+  return [data, getCustomerDetail, isLoading];
 }

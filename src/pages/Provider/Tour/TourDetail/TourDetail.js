@@ -14,6 +14,7 @@ import { useHistory } from "react-router-dom";
 import { pushToast } from "components/Toast";
 import { storage } from "core/FireBase";
 import http from "core/services/httpService";
+import { useAlert } from "react-alert";
 
 export default function TourDetail() {
   const [cates] = useFetchCategories();
@@ -37,6 +38,7 @@ export default function TourDetail() {
   const [images, setImages] = useState([]);
   const [dates, setDates] = useState([]);
   const [isEdit, setisEdit] = useState(false);
+  const alert = useAlert();
 
   const handleEditor = (value) => {
     setdescription(value);
@@ -139,8 +141,18 @@ export default function TourDetail() {
           ) : (
             <button
               className="btn btn-primary save"
-              // onClick={() => setisEdit(false)}
-              onClick={() => handleSubmit()}
+              onClick={() => {
+                alert.show(`Bạn có muốn lưu tour`, {
+                  title: "Chỉnh sửa tour",
+                  actions: [
+                    {
+                      copy: "Lưu",
+                      onClick: () => handleSubmit()
+                    }
+                  ],
+                  closeCopy: "Đóng"
+                });
+              }}
             >
               Lưu
             </button>

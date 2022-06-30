@@ -1,0 +1,35 @@
+@import "../../../../assets/scss/app.scss";
+.detail-customer{
+    padding: 50px;
+    &-top{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        .save{
+            height: 35px;
+            border-radius: 5px;
+        }
+        .back{
+            width: 40px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 50%;
+            background-color: white;
+            &:hover{
+                cursor: pointer;
+                background-color: rgb(217, 226, 226);
+            }
+        }
+    }
+    .avatar-cus{
+      border-radius: 50%;
+    }
+    .info-item{
+      margin-bottom: 5px;
+      div{
+        border: 1px solid;
+        padding: 5px;
+        font-size: 18px;
+      }
+    }
+}

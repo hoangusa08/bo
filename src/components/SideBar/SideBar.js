@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "store/user";
 import { useSelector } from "react-redux";
 import { USER_ROLE } from "core/constants";
+import logo from "assets/images/logo.svg";
 
 import "./SideBar.scss";
 
@@ -138,7 +139,8 @@ const SideBar = () => {
       <nav className={show ? "showSidebar sidebar" : "sidebar"}>
         <div>
           <div className="sidebar-header">
-            <h1>Du Lich Viet</h1>
+            {/* <h1>Du Lich Viet</h1> */}
+            <img src={logo} />
           </div>
           <ul className="sidebar-list list-unstyled components">
             {menu?.map((item, key) => {

@@ -10,11 +10,15 @@ import { pushToast } from "components/Toast";
 import http from "core/services/httpService";
 import Delete from "assets/images/delete.png";
 import Accept from "assets/images/accept.png";
+import { useAlert } from "react-alert";
+import Detail from "assets/images/detail1.png";
+import { useHistory } from "react-router-dom";
 
 function NewProvider() {
   const [search, setSearch] = useState("");
-
+  const alert = useAlert();
   const [data, getProvider] = useFetchProviderByStatus();
+  const history = useHistory();
 
   const handleSearch = (isNext, isSearch) => {
     if (isSearch) {
@@ -49,24 +53,63 @@ function NewProvider() {
         <th scope="row" style={{ textAlign: "center" }}>
           {++index}
         </th>
-        <td>{provider?.nameConpany}</td>
+        <td>{provider?.nameCompany}</td>
         <td>{provider?.owner}</td>
         <td>{provider?.email}</td>
         <td>{provider?.phoneNumber}</td>
         <td>{provider?.address}</td>
-        <td style={{ width: "150px" }}>
+        <td style={{ width: "200px" }}>
           <button
             className="btn-accept"
-            onClick={() => handleStatus(SatusConstant.ACCEPT, provider.id)}
+            onClick={() => {
+              alert.show(
+                `Bạn có muốn chấp nhận nhà cung cấp ${provider?.nameCompany.toUpperCase()}!`,
+                {
+                  title: "Chấp nhận cung cấp",
+                  actions: [
+                    {
+                      copy: "Chấp nhận",
+                      onClick: () =>
+                        handleStatus(SatusConstant.ACCEPT, provider.id)
+                    }
+                  ],
+                  closeCopy: "Đóng"
+                }
+              );
+            }}
           >
             <img className="delete" src={Accept} />
           </button>
           &nbsp;&nbsp;&nbsp;
           <button
             className="btn-delete"
-            onClick={() => handleStatus(SatusConstant.REFUSE, provider.id)}
+            onClick={() => {
+              alert.show(
+                `Bạn có muốn xóa nhà cung cấp ${provider?.nameCompany.toUpperCase()}!`,
+                {
+                  title: "Xóa nhà cung cấp",
+                  actions: [
+                    {
+                      copy: "Xóa",
+                      onClick: () =>
+                        handleStatus(SatusConstant.REFUSE, provider.id)
+                    }
+                  ],
+                  closeCopy: "Đóng"
+                }
+              );
+            }}
           >
             <img className="delete" src={Delete} />
+          </button>
+          &nbsp;&nbsp;&nbsp;
+          <button
+            className="btn-detail"
+            onClick={() =>
+              history.push(`/admin/provider-detail/${provider?.id}`)
+            }
+          >
+            <img className="detail" src={Detail} />
           </button>
         </td>
       </tr>

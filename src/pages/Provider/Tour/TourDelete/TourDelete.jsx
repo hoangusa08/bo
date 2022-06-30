@@ -9,10 +9,12 @@ import { React, useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import "./TourDelete.scss";
 import Recover from "assets/images/recover.png";
+import { useAlert } from "react-alert";
 
 function TourDelete() {
   const [data, getTour] = useFetchTourDelete();
   const [search, setSearch] = useState("");
+  const alert = useAlert();
 
   useEffect(() => {
     getTour(0, search);
@@ -48,6 +50,9 @@ function TourDelete() {
           {++index}
         </th>
         <td>{tour?.name}</td>
+        <td style={{ textAlign: "center" }}>
+          <img className="image-tour" src={tour?.tourImage} />
+        </td>
         <td>{tour?.category}</td>
         <td>{tour?.subDescription}</td>
         <td>{tour?.province}</td>
@@ -55,7 +60,21 @@ function TourDelete() {
         <td>
           <button
             className="btn-recover"
-            onClick={() => handlDeleteTour(tour.id)}
+            onClick={() => {
+              alert.show(
+                `Bạn có muốn bỏ xóa tour ${tour?.name.toUpperCase()}!`,
+                {
+                  title: "Bỏ xóa tour",
+                  actions: [
+                    {
+                      copy: "Lưu",
+                      onClick: () => handlDeleteTour(tour.id)
+                    }
+                  ],
+                  closeCopy: "Đóng"
+                }
+              );
+            }}
           >
             <img className="detail" src={Recover} />
           </button>
@@ -81,6 +100,7 @@ function TourDelete() {
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
                 <th>Tên</th>
+                <th>Ảnh</th>
                 <th>Thể loại</th>
                 <th>Mô tả</th>
                 <th>Địa điểm bắt đầu</th>

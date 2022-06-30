@@ -9,10 +9,11 @@ import { React, useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import "./ToursReject.scss";
 import Recover from "assets/images/recover.png";
+import { useAlert } from "react-alert";
 
 function ToursReject() {
   const [search, setSearch] = useState("");
-
+  const alert = useAlert();
   const [data, getTour] = useFetchTourAdmin();
 
   const handleSearch = (isNext, isSearch) => {
@@ -56,7 +57,21 @@ function ToursReject() {
         <td>
           <button
             className="btn-recover"
-            onClick={() => handleStatus("accept", tour.id)}
+            onClick={() => {
+              alert.show(
+                `Bạn có muốn mở khóa tour ${tour?.name.toUpperCase()}!`,
+                {
+                  title: "Mở khóa tour",
+                  actions: [
+                    {
+                      copy: "Mở khóa",
+                      onClick: () => handleStatus("accept", tour.id)
+                    }
+                  ],
+                  closeCopy: "Đóng"
+                }
+              );
+            }}
           >
             <img className="detail" src={Recover} />
           </button>

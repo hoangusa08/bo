@@ -10,10 +10,11 @@ import { React, useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import "./ProviderReject.scss";
 import Recover from "assets/images/recover.png";
+import { useAlert } from "react-alert";
 
 function ProviderReject() {
   const [search, setSearch] = useState("");
-
+  const alert = useAlert();
   const [data, getProvider] = useFetchProviderByStatus();
 
   const handleSearch = (isNext, isSearch) => {
@@ -49,7 +50,7 @@ function ProviderReject() {
         <th scope="row" style={{ textAlign: "center" }}>
           {++index}
         </th>
-        <td>{provider?.nameConpany}</td>
+        <td>{provider?.nameCompany}</td>
         <td>{provider?.owner}</td>
         <td>{provider?.email}</td>
         <td>{provider?.phoneNumber}</td>
@@ -57,7 +58,22 @@ function ProviderReject() {
         <td style={{ width: "100px" }}>
           <button
             className="btn-recover"
-            onClick={() => handleStatus(SatusConstant.ACCEPT, provider.id)}
+            onClick={() => {
+              alert.show(
+                `Bạn có muốn mở khóa nhà cung cấp ${provider?.nameCompany.toUpperCase()}!`,
+                {
+                  title: "Mở khóa nhà cung cấp",
+                  actions: [
+                    {
+                      copy: "mở khóa",
+                      onClick: () =>
+                        handleStatus(SatusConstant.ACCEPT, provider.id)
+                    }
+                  ],
+                  closeCopy: "Đóng"
+                }
+              );
+            }}
           >
             <img className="detail" src={Recover} />
           </button>

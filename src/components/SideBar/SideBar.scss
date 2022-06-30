@@ -24,6 +24,11 @@
       margin: 0 auto;
       height: 50px;
       align-items: center;
+      img {
+        width: 100%;
+        height: 85px;
+        margin-top: -27px;
+      }
     }
 
     @include mq_down(sp) {
