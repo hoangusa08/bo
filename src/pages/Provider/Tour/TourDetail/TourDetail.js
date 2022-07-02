@@ -30,7 +30,8 @@ export default function TourDetail() {
     providerId: 1,
     provinceId: 1,
     tourImage: ["", "", "", ""],
-    schedules: []
+    schedules: [],
+    numberPeople: ""
   });
   const history = useHistory();
   const [description, setdescription] = useState("");
@@ -58,7 +59,8 @@ export default function TourDetail() {
         provinceId: tourDetail?.locationStart?.id,
         tourImage: tourDetail?.tourImage,
         subDescription: tourDetail?.subDescription,
-        dateNumber: tourDetail?.dateNumber
+        dateNumber: tourDetail?.dateNumber,
+        numberPeople: tourDetail?.numberPeople
       });
       setdescription(tourDetail?.description);
       setDates(tourDetail?.schedules?.map((sche) => sche.date));
@@ -245,6 +247,25 @@ export default function TourDetail() {
                 ></input>
                 <span style={{ color: "red" }}>
                   {images.length === 0 && "Quang trọng!"}
+                </span>
+              </div>
+            </Col>
+            <Col>
+              <div className="detail-tour-body-item">
+                <h6 style={{ marginLeft: "5px" }}>Số người tối đa</h6>
+                <input
+                  placeholder="Số người tối đa"
+                  value={dataSubmit?.numberPeople}
+                  disabled={!isEdit}
+                  onChange={(e) =>
+                    setDataSubmit({
+                      ...dataSubmit,
+                      numberPeople: e.target.value
+                    })
+                  }
+                ></input>
+                <span style={{ color: "red" }}>
+                  {dataSubmit.numberPeople === "" && "Quang trọng!"}
                 </span>
               </div>
             </Col>

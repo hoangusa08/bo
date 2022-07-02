@@ -29,7 +29,8 @@ export default function CreateTour() {
     numberDate: 1,
     subDescription: "",
     tourImage: ["", "", "", ""],
-    schedules: []
+    schedules: [],
+    numberPeople: ""
   });
   const provider = getUser();
   const [images, setImages] = useState([]);
@@ -193,6 +194,24 @@ export default function CreateTour() {
                 ></input>
                 <span style={{ color: "red" }}>
                   {images.length === 0 && "Quang trọng!"}
+                </span>
+              </div>
+            </Col>
+            <Col>
+              <div className="create-tour-body-item">
+                <h6 style={{ marginLeft: "5px" }}>Số người tối đa</h6>
+                <input
+                  placeholder="Số người tối đa"
+                  value={dataSubmit.numberPeople}
+                  onChange={(e) =>
+                    setDataSubmit({
+                      ...dataSubmit,
+                      numberPeople: e.target.value
+                    })
+                  }
+                ></input>
+                <span style={{ color: "red" }}>
+                  {dataSubmit.childPrice === "" && "Quang trọng!"}
                 </span>
               </div>
             </Col>
