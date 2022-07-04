@@ -1,5 +1,6 @@
 import React from "react";
 import "./AuthBanner.scss";
+import logo from "assets/images/logo.svg";
 
 const AuthBanner = () => {
   return (
@@ -10,7 +11,8 @@ const AuthBanner = () => {
         </div>
       </div>
       <div className="slogan">
-        <p>DU LỊCH VIỆT</p>
+        <img src={logo} />
+        {/* <p>DU LỊCH VIỆT</p> */}
         <p>Trải nghiệm theo cách riếng của bạn</p>
       </div>
     </div>

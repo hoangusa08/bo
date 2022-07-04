@@ -1,7 +1,7 @@
 @import "../../assets/scss/app.scss";
 
 .auth-banner {
-  background: linear-gradient(269.37deg, #02548a 0%, #2d7ad8 100%);
+  background: linear-gradient(269.37deg, #057dce 0%, #022d61 100%);
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
@@ -37,9 +37,13 @@
     @include tablet-desktop {
       font-size: 15px;
     }
+    img{
+      width: 200px;
+    }
     p{
       margin: unset;
-      color: $color_white !important;
+      color: #00b4ff;
+      font-weight: 900;
     }
   }
   .labelWrapper {

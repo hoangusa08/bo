@@ -11,11 +11,14 @@ import "./NewTours.scss";
 import Delete from "assets/images/delete.png";
 import Accept from "assets/images/accept.png";
 import { useAlert } from "react-alert";
+import Detail from "assets/images/detail1.png";
+import { useHistory } from "react-router-dom";
 
 function NewTours() {
   const [search, setSearch] = useState("");
   const alert = useAlert();
   const [data, getTour] = useFetchTourAdmin();
+  const history = useHistory();
 
   const handleSearch = (isNext, isSearch) => {
     if (isSearch) {
@@ -73,7 +76,7 @@ function NewTours() {
           >
             <img className="delete" src={Accept} />
           </button>
-          &nbsp;&nbsp;&nbsp;
+          &nbsp;
           <button
             className="btn-delete"
             onClick={() => {
@@ -90,6 +93,13 @@ function NewTours() {
             }}
           >
             <img className="delete" src={Delete} />
+          </button>
+          <button
+            className="btn-detail"
+            disabled={tour?.isDelete === "true"}
+            onClick={() => history.push(`/admin/tour-detail/${tour.id}`)}
+          >
+            <img className="detail" src={Detail} />
           </button>
         </td>
       </tr>
@@ -112,12 +122,12 @@ function NewTours() {
             <thead>
               <tr style={{ backgroundColor: "#0B79C1", color: "#fff" }}>
                 <th>No</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Category</th>
-                <th>Provider</th>
-                <th>Descripttion</th>
-                <th style={{ width: "150px" }}>Action</th>
+                <th>Tên</th>
+                <th>Ảnh</th>
+                <th>Thể loại</th>
+                <th>Nhà cung cấp</th>
+                <th>Mô tả</th>
+                <th style={{ width: "170px" }}>Hành động</th>
               </tr>
             </thead>
             <tbody>{tableTour}</tbody>

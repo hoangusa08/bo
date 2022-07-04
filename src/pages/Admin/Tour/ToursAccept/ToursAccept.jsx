@@ -12,6 +12,7 @@ import Delete from "assets/images/delete.png";
 import Cmt from "assets/images/cmt.jpg";
 import { useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
+import Detail from "assets/images/detail1.png";
 
 function ToursAccept() {
   const [search, setSearch] = useState("");
@@ -82,6 +83,13 @@ function ToursAccept() {
           >
             <img className="detail" src={Cmt} />
           </button>
+          <button
+            className="btn-detail"
+            disabled={tour?.isDelete === "true"}
+            onClick={() => history.push(`/admin/tour-detail/${tour.id}`)}
+          >
+            <img className="detail" src={Detail} />
+          </button>
         </td>
       </tr>
     );
@@ -108,7 +116,7 @@ function ToursAccept() {
                 <th>Thể loại</th>
                 <th>Nhà cũng cấp</th>
                 <th>Mô tả</th>
-                <th style={{ width: "140px" }}>Hành động</th>
+                <th style={{ width: "180px" }}>Hành động</th>
               </tr>
             </thead>
             <tbody>{tableTour}</tbody>

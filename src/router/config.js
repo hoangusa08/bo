@@ -29,6 +29,7 @@ import Customer from "pages/Admin/Customer/Customer";
 import DashboardPro from "pages/Provider/Dashboard/DashboardPro";
 import CustomerDetail from "pages/Admin/Customer/CustomerDetail/CustomerDetail";
 import ProviderDetail from "pages/Admin/Provider/ProviderDetail/ProviderDetail";
+import TourDetailAdmin from "pages/Admin/TourDetail/TourDetailAdmin";
 
 export const routeConfig = [
   {
@@ -156,6 +157,12 @@ export const routeConfig = [
     isPrivate: true,
     exact: true,
     component: ProviderReject
+  },
+  {
+    path: "/admin/tour-detail/:id",
+    isPrivate: true,
+    exact: true,
+    component: TourDetailAdmin
   },
   {
     path: "/admin/provider-detail/:id",
