@@ -6,12 +6,10 @@ import { useTranslation } from "react-i18next";
 import "plugins/react-i18n.js";
 import Toast from "components/Toast";
 import { routeConfig, RouteWithSubRoutes } from "router/config";
-
 import Error from "pages/Error/Error";
 import Login from "pages/Authentication/Login/Login";
 import Dashboard from "pages/Admin/Dashboard/Dashboard";
 import DashboardPro from "pages/Provider/Dashboard/DashboardPro";
-
 import { positions, Provider } from "react-alert";
 import AlertMUITemplate from "react-alert-template-mui";
 
