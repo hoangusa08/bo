@@ -45,6 +45,11 @@ const menu_provider = [
     icon: ""
   },
   {
+    label: "Tour cần hoàn thành trong tháng",
+    path: "/tour-need-compelete",
+    icon: ""
+  },
+  {
     label: "Tours đặt đã hoàn thành",
     path: "/tour-booked-complete",
     icon: ""

@@ -30,6 +30,7 @@ import DashboardPro from "pages/Provider/Dashboard/DashboardPro";
 import CustomerDetail from "pages/Admin/Customer/CustomerDetail/CustomerDetail";
 import ProviderDetail from "pages/Admin/Provider/ProviderDetail/ProviderDetail";
 import TourDetailAdmin from "pages/Admin/TourDetail/TourDetailAdmin";
+import TourNeedCompleteInMonth from "pages/Provider/TourBooked/TourNeedCompleteInMonth/TourNeedCompleteInMonth";
 
 export const routeConfig = [
   {
@@ -121,6 +122,12 @@ export const routeConfig = [
     isPrivate: true,
     exact: true,
     component: TourBookedDelete
+  },
+  {
+    path: "/tour-need-compelete",
+    isPrivate: true,
+    exact: true,
+    component: TourNeedCompleteInMonth
   },
   {
     path: "/admin/new-provider",
