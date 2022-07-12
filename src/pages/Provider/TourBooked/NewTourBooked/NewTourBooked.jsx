@@ -9,9 +9,11 @@ import { Table } from "reactstrap";
 import "./NewTourBooked.scss";
 import Accept from "assets/images/accept.png";
 import Reject from "assets/images/reject.png";
+import { useAlert } from "react-alert";
 
 function NewTourBooked() {
   const [data, getBooked] = useGetTourByStatus();
+  const alert = useAlert();
 
   useEffect(() => {
     getBooked(PAYMENT_STATUS.WAITNG);
@@ -44,14 +46,36 @@ function NewTourBooked() {
         <td>
           <button
             className="btn-accept"
-            onClick={() => handleStatus(book.id, PAYMENT_STATUS.APPROVE)}
+            onClick={() => {
+              alert.show(`Bạn muốn chấp nhận đơn đặt tour!`, {
+                title: "Chấp nhận đơn đặt tour",
+                actions: [
+                  {
+                    copy: "Chấp nhận",
+                    onClick: () => handleStatus(book.id, PAYMENT_STATUS.APPROVE)
+                  }
+                ],
+                closeCopy: "Đóng"
+              });
+            }}
           >
             <img src={Accept} />
           </button>
           &nbsp;&nbsp;&nbsp;
           <button
             className="btn-reject"
-            onClick={() => handleStatus(book.id, PAYMENT_STATUS.CANCEL)}
+            onClick={() => {
+              alert.show(`Bạn muốn không chấp nhận đơn đặt tour!`, {
+                title: "Không chấp nhận đơn đặt tour",
+                actions: [
+                  {
+                    copy: "Xóa",
+                    onClick: () => handleStatus(book.id, PAYMENT_STATUS.CANCEL)
+                  }
+                ],
+                closeCopy: "Đóng"
+              });
+            }}
           >
             <img className="reject" src={Reject} />
           </button>

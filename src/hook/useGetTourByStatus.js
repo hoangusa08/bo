@@ -14,7 +14,10 @@ export default function useGetTourByStatus() {
       await http
         .get(`/provider/list-book-tour/${user?.id}/${status}`)
         .then((response) => {
-          setData(response.data);
+          let temp = response.data.sort(function (a, b) {
+            return new Date(a.schedule) - new Date(b.schedule);
+          });
+          setData(temp);
           setIsLoading(false);
         });
     } catch (error) {

@@ -140,14 +140,19 @@ export default function Account() {
                       <Col>
                         <div className="item">
                           <h4>Ngân hàng</h4>
-
                           <select
                             name="bankId"
                             id="cars"
                             className="form-input"
                           >
                             {banks?.map((bank) => (
-                              <option value={bank?.id} key={bank?.id}>
+                              <option
+                                value={bank?.id}
+                                key={bank?.id}
+                                selected={
+                                  bank?.id === values?.bankId && "selected"
+                                }
+                              >
                                 {bank?.name}
                               </option>
                             ))}

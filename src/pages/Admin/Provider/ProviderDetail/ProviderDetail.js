@@ -9,6 +9,7 @@ import http from "core/services/httpService";
 import { pushToast } from "components/Toast";
 import { useAlert } from "react-alert";
 import useGetProviderDetail from "hook/useGetProviderDetail";
+import { SatusConstant } from "assets/constants/StatusConstant";
 
 export default function ProviderDetail() {
   const history = useHistory();
@@ -20,11 +21,11 @@ export default function ProviderDetail() {
     getProviderDetail(id);
   }, []);
 
-  const handlDeleteCus = async (id) => {
+  const handlDeleteCus = async (status, id) => {
     await http
-      .put(`/admin/customer/${id}`)
+      .post(`/admin/provider/${status}/${id}`)
       .then(() => {
-        history.push("/admin/customer");
+        history.push("/admin/provider-accept");
       })
       .catch((error) => {
         pushToast("error", error.message);
@@ -38,7 +39,7 @@ export default function ProviderDetail() {
           <div style={{ display: "flex" }}>
             <button
               className="back"
-              onClick={() => history.push("/admin/customer")}
+              onClick={() => history.push("/admin/provider-accept")}
             >
               <img src={Back} />
             </button>
@@ -49,13 +50,14 @@ export default function ProviderDetail() {
             className="btn btn-primary save"
             onClick={() => {
               alert.show(
-                `Bạn có muốn xóa khách hàng ${data?.fullName.toUpperCase()}!`,
+                `Bạn có muốn xóa khách hàng ${data?.nameCompany.toUpperCase()}!`,
                 {
                   title: "Xóa khách hàng",
                   actions: [
                     {
                       copy: "Xóa",
-                      onClick: () => handlDeleteCus(data.id)
+                      onClick: () =>
+                        handlDeleteCus(SatusConstant.REFUSE, data.id)
                     }
                   ],
                   closeCopy: "Đóng"

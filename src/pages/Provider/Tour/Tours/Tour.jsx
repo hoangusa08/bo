@@ -74,7 +74,7 @@ function Tour() {
 
   const handleSearch = (isNext, isSearch) => {
     if (isSearch) {
-      getTour(SatusConstant.WAITING, 0, search);
+      getTour(SatusConstant.ACCEPT, 0, search);
     } else {
       if (isNext) {
         getTour(SatusConstant.ACCEPT, data?.page + 1, search);

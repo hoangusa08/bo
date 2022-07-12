@@ -49,7 +49,7 @@ export default function CreateTour() {
       })
       .then((response) => {
         pushToast("success", response.message);
-        // history.push("/manage-tour");
+        window.location.reload();
       })
       .catch((error) => {
         pushToast("error", error.message);

@@ -5,12 +5,13 @@ import http from "core/services/httpService";
 import useGetTourByStatus from "hook/useGetTourByStatus";
 import MainLayout from "layout/MainLayout/MainLayout";
 import { React, useEffect } from "react";
+import { useAlert } from "react-alert";
 import { Table } from "reactstrap";
 import "./TourBookedAccept.scss";
 
 function TourBookedAccept() {
   const [data, getBooked] = useGetTourByStatus();
-
+  const alert = useAlert();
   useEffect(() => {
     getBooked(PAYMENT_STATUS.APPROVE);
   }, []);
@@ -20,7 +21,7 @@ function TourBookedAccept() {
       .post(`/provider/book-tour/${id}/${status}`)
       .then((res) => {
         pushToast("success", res.message);
-        getBooked(PAYMENT_STATUS.WAITNG);
+        getBooked(PAYMENT_STATUS.APPROVE);
       })
       .catch((e) => {
         pushToast("error", e?.message);
@@ -42,14 +43,37 @@ function TourBookedAccept() {
         <td>
           <button
             className="btn btn-success"
-            onClick={() => handleStatus(book.id, PAYMENT_STATUS.COMPLETE)}
+            onClick={() => {
+              alert.show(`Tour này đã tổ chức xong!`, {
+                title: "Hoàn thành tour",
+                actions: [
+                  {
+                    copy: "ok",
+                    onClick: () =>
+                      handleStatus(book.id, PAYMENT_STATUS.COMPLETE)
+                  }
+                ],
+                closeCopy: "Đóng"
+              });
+            }}
           >
             Complete
           </button>
           &nbsp;&nbsp;&nbsp;
           <button
             className="btn btn-danger"
-            onClick={() => handleStatus(book.id, PAYMENT_STATUS.CANCEL)}
+            onClick={() => {
+              alert.show(`Bạn muốn hủy tour!`, {
+                title: "hủy tour",
+                actions: [
+                  {
+                    copy: "Xóa",
+                    onClick: () => handleStatus(book.id, PAYMENT_STATUS.CANCEL)
+                  }
+                ],
+                closeCopy: "Đóng"
+              });
+            }}
           >
             Cancel
           </button>
